@@ -27,4 +27,4 @@ Trong bài lab này, chúng ta sẽ mô phỏng và triển khai mạng lưới 
 
 Mọi cấu hình trong Workshop này đều tuân thủ chặt chẽ theo thiết kế hạ tầng thực tế dưới đây:
 
-![Sơ đồ kiến trúc J2Car](images/kientruchethong.png)
+![Sơ đồ kiến trúc J2Car](/images/kientruchethong.png)

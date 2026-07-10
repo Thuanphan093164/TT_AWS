@@ -34,5 +34,5 @@ I provisioned an S3 Interface Endpoint in our Cloud VPC to attach a static priva
 Once created, the VPC Dashboard displays the endpoint resource details:
 
 #### Interface Endpoint Status Available:
-![S3 VPC Endpoint](images/5-Workshop/4-endpoints.png)
+![S3 VPC Endpoint](/images/5-Workshop/4-endpoints.png)
 *(The Endpoint list now contains an Interface Type resource associated with private IP endpoints).*

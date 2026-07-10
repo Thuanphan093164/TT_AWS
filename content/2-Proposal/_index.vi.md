@@ -45,7 +45,7 @@ J2Car AutoParts giải quyết toàn bộ các vấn đề trên thông qua nề
 
 Dưới đây là sơ đồ kiến trúc hệ thống tổng thể của J2Car trên nền tảng AWS:
 
-![Kiến Trúc Hệ Thống J2Car AutoParts](images/kientruchethong.png)
+![Kiến Trúc Hệ Thống J2Car AutoParts](/images/kientruchethong.png)
 
 ### 3.1. Thiết Kế Mạng (Network Design)
 

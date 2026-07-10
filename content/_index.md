@@ -27,7 +27,7 @@ chapter: false
 
 &emsp; **Internship Period:** From April 20, 2026 to July 13, 2026
 
-![Your profile picture](images/avatar.jpg)
+![Your profile picture](/images/avatar.jpg)
 
 ### Report Content
 

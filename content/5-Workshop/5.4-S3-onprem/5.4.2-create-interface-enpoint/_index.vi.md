@@ -34,5 +34,5 @@ Tôi tiến hành khởi tạo một **Interface Endpoint** cho S3 nằm trong V
 Sau khi khởi tạo thành công, giao diện quản trị hiển thị trạng thái hoạt động:
 
 #### Endpoint s3-interface-endpoint ở trạng thái Available:
-![S3 Interface Endpoint thực tế](images/5-Workshop/4-endpoints.png)
+![S3 Interface Endpoint thực tế](/images/5-Workshop/4-endpoints.png)
 *(Trong danh sách sẽ xuất hiện thêm một dòng Endpoint có Type là Interface, liên kết với IP Private của VPC Cloud).*

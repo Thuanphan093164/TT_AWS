@@ -36,9 +36,9 @@ aws lambda create-function \
 
 #### Minh Chứng Kết Quả Trên AWS Console:
 - **Hàng Đợi SQS Hoạt Động (`7-sqs.png`):**
-  ![SQS thực tế](images/5-Workshop/7-sqs.png)
+  ![SQS thực tế](/images/5-Workshop/7-sqs.png)
 - **Hàm Lambda Sẵn Sàng Nhận Trigger (`8-lambda.png`):**
-  ![Lambda thực tế](images/5-Workshop/8-lambda.png)
+  ![Lambda thực tế](/images/5-Workshop/8-lambda.png)
 
 ---
 
@@ -61,6 +61,6 @@ aws wafv2 create-web-acl \
 
 #### Minh Chứng Kết Quả Trên AWS Console:
 - **Secrets Manager Đã Tạo Khóa Thành Công (`9-secrets.png`):**
-  ![Secrets Manager thực tế](images/5-Workshop/9-secrets.png)
+  ![Secrets Manager thực tế](/images/5-Workshop/9-secrets.png)
 - **Tường Lửa AWS WAFv2 Bảo Vệ ALB Vùng Singapore (`10-waf.png`):**
-  ![WAF thực tế](images/5-Workshop/10-waf.png)
+  ![WAF thực tế](/images/5-Workshop/10-waf.png)

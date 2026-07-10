@@ -27,4 +27,4 @@ In this deployment lab, we construct and test connectivity between:
 
 All configurations executed in this guide strictly conform to the layout below:
 
-![J2Car System Architecture](images/kientruchethong.png)
+![J2Car System Architecture](/images/kientruchethong.png)

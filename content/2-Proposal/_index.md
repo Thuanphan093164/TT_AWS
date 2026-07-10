@@ -43,7 +43,7 @@ J2Car AutoParts resolves all of the above through a modern web platform with dis
 
 The architecture diagram below illustrates the overall J2Car system on the AWS platform:
 
-![J2Car AutoParts System Architecture](images/kientruchethong.png)
+![J2Car AutoParts System Architecture](/images/kientruchethong.png)
 
 ### 3.1. Network Design
 

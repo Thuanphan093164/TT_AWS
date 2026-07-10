@@ -57,7 +57,7 @@ aws elasticache create-replication-group --replication-group-id j2car-redis-grou
 Sau khi clusters chuyển sang trạng thái sẵn sàng (`available`), tôi lưu lại giao diện quản trị thực tế:
 
 #### 3.1. AWS DocumentDB Clusters Hoạt Động (`5-docdb.png`)
-![DocumentDB thực tế](images/5-Workshop/5-docdb.png)
+![DocumentDB thực tế](/images/5-Workshop/5-docdb.png)
 
 #### 3.2. Clusters Amazon ElastiCache Redis Sẵn Sàng (`6-redis.png`)
-![Redis thực tế](images/5-Workshop/6-redis.png)
+![Redis thực tế](/images/5-Workshop/6-redis.png)

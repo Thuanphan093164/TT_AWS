@@ -43,7 +43,7 @@ aws s3 cp testfile.xyz s3://j2car-media-bucket-571210199437
 ### 3. AWS Console Verification Proofs
 
 #### 3.1. S3 Media Bucket containing the uploaded payload (`14-s3.png`):
-![S3 Media Bucket Content](images/5-Workshop/14-s3.png)
+![S3 Media Bucket Content](/images/5-Workshop/14-s3.png)
 
 #### 3.2. Route Table Ingestion
 Inside the private Route Table settings, I confirmed that a local route entry directing S3 Prefix List traffic (`pl-6fa54006`) to the target Endpoint Gateway `vpce-XXXXXXXX` has been appended. 

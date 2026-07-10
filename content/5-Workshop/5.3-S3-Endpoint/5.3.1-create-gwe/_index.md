@@ -32,4 +32,4 @@ I initiated and attached a Gateway Endpoint for Amazon S3 to the private route t
 I verified the active route endpoint in the VPC Dashboard:
 
 #### S3 VPC Gateway Endpoint Active (`4-endpoints.png`):
-![S3 VPC Endpoint](/images/5-Workshop/4-endpoints.png)
+![S3 VPC Endpoint](images/5-Workshop/4-endpoints.png)

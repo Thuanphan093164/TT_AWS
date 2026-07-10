@@ -22,7 +22,7 @@ This workshop documents the step-by-step process of constructing and running the
 
 Every deployment stage was configured in strict compliance with the architecture diagram below:
 
-![J2Car AutoParts System Architecture](/images/kientruchethong.png)
+![J2Car AutoParts System Architecture](images/kientruchethong.png)
 
 ---
 

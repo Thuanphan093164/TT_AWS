@@ -46,7 +46,7 @@ Once the stack transitioned to `CREATE_COMPLETE`, the public and private subnet 
 ### 3. AWS Console Verification Proofs
 
 #### 3.1. Provisioned S3 Buckets for static hosting and products (`14-s3.png`):
-![Active S3 Buckets](/images/5-Workshop/14-s3.png)
+![Active S3 Buckets](images/5-Workshop/14-s3.png)
 
 #### 3.2. Private ECR Container Registries (`11-ecr.png`):
-![ECR Registries](/images/5-Workshop/11-ecr.png)
+![ECR Registries](images/5-Workshop/11-ecr.png)

@@ -43,7 +43,7 @@ aws s3 cp testfile.xyz s3://j2car-media-bucket-571210199437
 ### 3. Minh Chứng Kết Quả Thực Tế Trên AWS Console
 
 #### 3.1. Danh sách S3 Buckets chứa tệp tin đã tải lên thành công (`14-s3.png`):
-![S3 Buckets thực tế](/images/5-Workshop/14-s3.png)
+![S3 Buckets thực tế](images/5-Workshop/14-s3.png)
 
 #### 3.2. Trạng thái Route Table của Private Subnet
 Tại tab **Route Tables** của VPC Cloud, tôi xác nhận một route mới đã được tự động thêm vào trỏ Prefix List của S3 (`pl-6fa54006`) tới Target là Gateway Endpoint ID `vpce-XXXXXXXX`. 

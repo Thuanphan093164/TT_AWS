@@ -46,7 +46,7 @@ Sau khoảng 5 phút, CloudFormation Stack báo trạng thái `CREATE_COMPLETE`.
 ### 3. Minh Chứng Thực Tế Trên AWS Console
 
 #### 3.1. Danh sách S3 Buckets chứa Frontend & Media (`14-s3.png`):
-![S3 Buckets thực tế](/images/5-Workshop/14-s3.png)
+![S3 Buckets thực tế](images/5-Workshop/14-s3.png)
 
 #### 3.2. Kho lưu trữ Container Images trên ECR (`11-ecr.png`):
-![ECR Repositories thực tế](/images/5-Workshop/11-ecr.png)
+![ECR Repositories thực tế](images/5-Workshop/11-ecr.png)

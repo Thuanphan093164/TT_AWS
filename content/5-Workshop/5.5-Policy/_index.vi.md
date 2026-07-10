@@ -57,7 +57,7 @@ aws cloudfront create-distribution \
 ```
 
 #### AWS CloudFront Console Proof (`15-cloudfront.png`):
-![AWS CloudFront Console](/images/5-Workshop/15-cloudfront.png)
+![AWS CloudFront Console](images/5-Workshop/15-cloudfront.png)
 
 > [!WARNING]
 > **Lưu ý kỹ thuật về lỗi AccessDenied:**

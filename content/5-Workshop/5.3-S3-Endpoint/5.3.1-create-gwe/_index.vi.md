@@ -32,4 +32,4 @@ Tôi tiến hành khởi tạo và liên kết Gateway Endpoint cho S3 vào bả
 Sau khi khởi tạo thành công, tôi truy cập VPC Dashboard để xác thực trạng thái hoạt động:
 
 #### Trạng thái Endpoint hoạt động ổn định (`4-endpoints.png`):
-![S3 VPC Endpoint](/images/5-Workshop/4-endpoints.png)
+![S3 VPC Endpoint](images/5-Workshop/4-endpoints.png)

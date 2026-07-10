@@ -54,7 +54,7 @@ aws elasticache create-replication-group --replication-group-id j2car-redis-grou
 ### 3. Verification Proofs inside AWS Console
 
 #### 3.1. Amazon DocumentDB Cluster Status (`5-docdb.png`)
-![DocumentDB Clusters](/images/5-Workshop/5-docdb.png)
+![DocumentDB Clusters](images/5-Workshop/5-docdb.png)
 
 #### 3.2. Amazon ElastiCache Redis Replication Group (`6-redis.png`)
-![ElastiCache Redis](/images/5-Workshop/6-redis.png)
+![ElastiCache Redis](images/5-Workshop/6-redis.png)

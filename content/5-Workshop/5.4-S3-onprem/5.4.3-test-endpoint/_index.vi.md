@@ -1,55 +1,47 @@
 ---
-title : "Kiểm tra Interface Endpoint"
-date : 2024-01-01
-weight : 3
-chapter : false
-pre : " <b> 5.4.3 </b> "
+title: "Kiểm thử Interface Endpoint"
+date: 2024-01-01
+weight: 3
+chapter: false
+pre: " <b> 5.4.3. </b> "
 ---
 
-#### Lấy regional DNS name (tên DNS khu vực) của S3 interface endpoint
-1. Trong Amazon VPC menu, chọn Endpoints.
+## Kiểm Thử Kết Nối Interface Endpoint
 
-2. Click tên của endpoint chúng ta mới tạo ở mục 4.2: s3-interface-endpoint. Click details và lưu lại regional DNS name của endpoint (cái đầu tiên) vào text-editor của bạn để dùng ở các bước sau.
+Tôi thực hiện kiểm thử tải tệp tin lên S3 từ máy chủ EC2 giả lập On-premises thông qua liên kết DNS của Interface Endpoint mới tạo.
 
-![dns name](/images/5-Workshop/5.4-S3-onprem/dns.png)
+---
 
-#### Kết nối đến EC2 instance ở trong "VPC On-prem" (giả lập môi trường truyền thống)
+### 1. Lấy liên kết DNS vùng (Regional DNS Name) của Interface Endpoint
 
-1. Đi đến **Session manager** bằng cách gõ "session manager" vào ô tìm kiếm
+1. Mở **Amazon VPC Console -> Endpoints**.
+2. Nhấp vào Endpoint có tên `s3-interface-endpoint` vừa tạo.
+3. Tại tab **Details**, sao chép dòng DNS đầu tiên (Regional DNS Name, ví dụ: `vpce-0c03478d1f2a-ap-southeast-1.s3.ap-southeast-1.vpce.amazonaws.com`) và dán vào notepad để chuẩn bị sử dụng.
 
-2. Click **Start Session**, chọn EC2 instance có tên **Test-Interface-Endpoint**. EC2 instance này đang chạy trên "VPC On-prem" và sẽ được sử dụng để kiểm tra kết nối đến Amazon S3 thông qua Interface endpoint. Session Manager sẽ mở 1 browser tab mới với shell prompt: **sh-4.2 $**
+---
 
-![Start session](/images/5-Workshop/5.4-S3-onprem/start-session.png)
+### 2. Kết nối EC2 On-premise qua Session Manager
 
-3. Đi đến ssm-user's home directory với lệnh "cd ~"
+1. Mở **AWS Systems Manager Console -> Session Manager**.
+2. Nhấp **Start Session** và chọn EC2 instance có tên **Test-Interface-Endpoint** (đang chạy trong phân vùng giả lập `VPC On-prem`).
+3. Khởi tạo một tệp tin test 1GB tại terminal và đẩy lên S3:
 
-4. Tạo 1 file tên testfile2.xyz
-```
+```bash
+# Di chuyển vào home directory
+cd ~
+
+# Khởi tạo tệp tin testfile2.xyz
 fallocate -l 1G testfile2.xyz
+
+# Tải tệp tin lên S3 sử dụng tham số endpoint-url
+aws s3 cp --endpoint-url https://bucket.vpce-0c03478d1f2a-ap-southeast-1.s3.ap-southeast-1.vpce.amazonaws.com testfile2.xyz s3://j2car-media-bucket-571210199437
 ```
+*(Lưu ý: Thay thế tên DNS sau chữ bucket. bằng dòng DNS bạn đã sao chép ở Bước 1).*
 
-![user](/images/5-Workshop/5.4-S3-onprem/cli1.png)
+---
 
-5. Copy file vào S3 bucket mình tạo ở section 4.2
-```
-aws s3 cp --endpoint-url https://bucket.<Regional-DNS-Name> testfile2.xyz s3://<your-bucket-name>
-``` 
-+ Câu lệnh này yêu cầu thông số --endpoint-url, bởi vì bạn cần sử dụng DNS name chỉ định cho endpoint để truy cập vào S3 thông qua Interface endpoint.
-+ Không lấy ' * ' khi copy/paste tên DNS khu vực.
-+ Cung cấp tên S3 bucket của bạn
+### 3. Xác thực kết quả trên S3
 
-![copy file](/images/5-Workshop/5.4-S3-onprem/cli2.png)
+Tệp tin `testfile2.xyz` đã được tải lên thành công. Tôi truy cập **S3 Management Console** để xác nhận file đã xuất hiện trong Media Bucket.
 
-Bây giờ tệp đã được thêm vào bộ chứa S3 của bạn. Hãy kiểm tra bộ chứa S3 của bạn trong bước tiếp theo.
-
-#### Kiểm tra Object trong S3 bucket
-
-1. Đi đến S3 console
-2. Click Buckets
-3. Click tên bucket của bạn và bạn sẽ thấy testfile2.xyz đã được thêm vào s3 bucket của bạn
-
-![check bucket](/images/5-Workshop/5.4-S3-onprem/check-bucket.png)
-
-
-
-
+Quá trình tải lên thành công thông qua đường truyền mạng VPN nội bộ và Interface Endpoint mà hoàn toàn không cần tiếp cận mạng Internet công cộng từ on-premises.

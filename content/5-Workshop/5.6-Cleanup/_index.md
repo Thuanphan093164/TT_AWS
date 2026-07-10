@@ -1,32 +1,34 @@
 ---
-title : "Clean up"
-date : 2024-01-01
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Step 6: Resource Cleanup"
+date: 2024-01-01
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
-Congratulations on completing this workshop! 
-In this workshop, you learned architecture patterns for accessing Amazon S3 without using the Public Internet. 
-+ By creating a gateway endpoint, you enabled direct communication between EC2 resources and Amazon S3, without traversing an Internet Gateway. 
-+ By creating an interface endpoint you extended S3 connectivity to resources running in your on-premises data center via AWS Site-to-Site VPN or Direct Connect. 
 
-#### clean up
-1. Navigate to Hosted Zones on the left side of Route 53 console. Click the name of *s3.us-east-1.amazonaws.com* zone. Click Delete and confirm deletion by typing delete. 
+## Step 6: Resource Cleanup (Clean Up)
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
+After completing the tests and validating DNS forwarding and S3 Gateway/Interface VPC Endpoints for the J2Car AutoParts platform, cleaning up resources is important to avoid unexpected charges in the AWS account.
 
-2. Disassociate the Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
+---
 
-![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
+### Standard Cleanup Workflow
 
-4. Open the CloudFormation console  and delete the two CloudFormation Stacks that you created for this lab:
-+ PLOnpremSetup
-+ PLCloudSetup
+To clean up all components created for this lab, delete resources in the following order:
 
-![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+1. **Delete DNS Resources:**
+   - Remove forwarding rules in the Route 53 Resolver Rules panel.
+   - Delete Route 53 Private Hosted Zones and associated DNS Alias records.
+2. **Delete VPC Endpoints:**
+   - Terminate the Gateway Endpoint (`s3-gwe`).
+   - Terminate the Interface Endpoint (`s3-interface-endpoint`).
+3. **Delete CloudFormation Stacks:**
+   - Delete the stack named `J2Car-Resolver-Endpoints` first.
+   - Once completed, delete the core network stack `J2Car-Workshop-Network` (this automatically rolls back the VPC, NAT Gateways, Subnets, and Route Tables).
+4. **Delete S3 Buckets:**
+   - Empty and delete the temporary S3 Buckets.
 
-5. Delete S3 buckets
-+ Open S3 console
-+ Choose the bucket we created for the lab, click and confirm empty. Click delete and confirm delete.
+---
 
-![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)
+> [!IMPORTANT]
+> To keep the real-world system active for presentation and writing reports, all core compute, databases, S3 buckets, ECR registries, and WAF firewalls configured for **J2Car AutoParts** **remain untouched** and will not be deleted from your AWS account.

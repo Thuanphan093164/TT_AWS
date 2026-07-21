@@ -1,117 +1,87 @@
 ---
-title: "Event 2"
-date: 2024-01-01
-weight: 1
+title: "Swinburne Cloud Mastery 2026"
+date: 2026-07-11
+weight: 2
 chapter: false
 pre: " <b> 4.2. </b> "
 ---
- 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
 
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+# Báo cáo thu hoạch: Swinburne Cloud Mastery 2026
 
-### Danh Sách Diễn Giả
+### Thông tin sự kiện
+* **Tên sự kiện:** Swinburne Cloud Mastery 2026
+* **Thời gian:** 11/07/2026 (08:30 - 12:00)
+* **Địa điểm:** Campus Swinburne Việt Nam TP.HCM, A35 Đường Bạch Đằng, Quận Tân Bình, Thành phố Hồ Chí Minh, Việt Nam
+* **Vai trò:** Người tham dự
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+---
 
-### Nội Dung Nổi Bật
+### Mục tiêu sự kiện
+Swinburne Cloud Mastery 2026 là một sự kiện công nghệ đầy cảm hứng nhằm kết nối kiến thức học thuật tại giảng đường với nhu cầu thực tế của doanh nghiệp. Các mục tiêu chính bao gồm:
+* Khơi dậy niềm đam mê và tinh thần học hỏi của sinh viên đối với lĩnh vực Điện toán đám mây và hệ sinh thái Amazon Web Services (AWS).
+* Cung cấp góc nhìn thực tế về thị trường việc làm Cloud Computing, định hướng nghề nghiệp và các xu hướng công nghệ mới tại Việt Nam.
+* Tạo không gian giao lưu, kết nối giữa sinh viên Swinburne Việt Nam (cơ sở TP.HCM và Cần Thơ) với các kiến trúc sư giải pháp AWS, chuyên gia công nghệ và các cựu sinh viên thành công.
+* Thảo luận về phương pháp nuôi dưỡng tư duy đổi mới sáng tạo và thu hẹp khoảng cách giữa lý thuyết đại học và thực tế dự án doanh nghiệp.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+---
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+### Nội dung nổi bật từ các bài trình bày
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### 1. Kết nối Giảng đường với Doanh nghiệp
+* **Diễn giả:** Duy Nguyen (Cán bộ liên lạc doanh nghiệp, Swinburne Việt Nam)
+* **Nội dung chính:**
+  * Khai mạc sự kiện bằng việc chia sẻ tầm quan trọng của việc kết nối nhà trường và doanh nghiệp nhằm chuẩn bị hành trang tốt nhất cho sinh viên khi ra trường.
+  * Nhấn mạnh vai trò của các chương trình như First Cloud AI Journey (FCAJ) trong việc tạo dựng bệ phóng nghề nghiệp cho sinh viên.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### 2. Thị trường việc làm Cloud Computing & Xu hướng nghề nghiệp
+* **Diễn giả:** Nguyễn Gia Hưng (Trưởng bộ phận Kiến trúc Giải pháp)
+* **Nội dung chính:**
+  * Phân tích sâu sắc về nhu cầu tuyển dụng kỹ sư Cloud và Kiến trúc sư giải pháp (Solution Architect) đang tăng trưởng mạnh mẽ tại Việt Nam cũng như trên toàn thế giới.
+  * Định hướng cho sinh viên các bộ kỹ năng, chứng chỉ AWS cần thiết và kinh nghiệm thực chiến cần chuẩn bị để lọt vào mắt xanh của các nhà tuyển dụng hàng đầu.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+#### 3. Từ sinh viên đến kỹ sư thực thụ: Hành trình & Thách thức Kiến trúc Dữ liệu
+* **Diễn giả:** Cam Vinh Banh (Kỹ sư Dữ liệu)
+* **Nội dung chính:**
+  * Chia sẻ câu chuyện phát triển bản thân từ một sinh viên CNTT trở thành một Kỹ sư Dữ liệu chuyên nghiệp.
+  * Phân tích các thách thức thực tế khi thiết kế kiến trúc dữ liệu, vận hành các pipeline dữ liệu quy mô lớn và đảm bảo tính sẵn sàng cao cho cơ sở dữ liệu.
 
-#### Domain-Driven Design (DDD)
+#### 4. Fireside Chat: "Làm thế nào để nuôi dưỡng một Steve Jobs phiên bản Việt?"
+* **Điều phối:** Nhu Tran và Nguyễn Ngọc Quỳnh Mai
+* **Nội dung chính:**
+  * Buổi tọa đàm mở đầy thú vị về văn hóa đổi mới sáng tạo trong giới trẻ Việt Nam.
+  * Thảo luận về sự kết hợp giữa tư duy tự do, sự am hiểu sâu sắc về mặt kỹ thuật và tinh thần khởi nghiệp để bồi dưỡng những thủ lĩnh công nghệ tương lai.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+#### 5. Rút ngắn khoảng cách: Lý thuyết học thuật vs. Triển khai thực tế
+* **Diễn giả:** Khang Nguyen (Kiến trúc sư giải pháp tại Cloud Kinetics & Cựu sinh viên Swinburne)
+* **Nội dung chính:**
+  * Hướng dẫn sinh viên cách chuyển đổi những kiến thức lý thuyết trên lớp thành các hệ thống chạy thực tế đạt chuẩn production.
+  * Chia sẻ kinh nghiệm tự học dịch vụ AWS, xây dựng portfolio cá nhân và định hướng lộ trình trở thành Solution Architect.
 
-#### Event-Driven Architecture
+---
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Những bài học và giá trị gặt hái được
 
-#### Compute Evolution
+#### 1. Tư duy đổi mới và tinh thần học hỏi
+* **Tinh thần hiếu kỳ và đam mê:** Sự quan tâm ngày càng tăng đối với Cloud và AI cho thấy thành công trong ngành công nghệ đòi hỏi tinh thần chủ động tự học và đam mê khám phá các công nghệ mới vượt ra ngoài khuôn khổ giáo trình.
+* **Nuôi dưỡng tư duy đổi mới:** Để tạo ra sản phẩm đột phá, sinh viên cần rèn luyện tư duy phản biện, góc nhìn khởi nghiệp và coi công nghệ là công cụ giải quyết bài toán thực tế của người dùng.
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+#### 2. Kiến thức kỹ thuật thực tế
+* **Thách thức về thiết kế dữ liệu:** Việc xây dựng hệ thống dữ liệu hoạt động mượt mà yêu cầu hiểu biết sâu sắc về các giải pháp database khác nhau (SQL, NoSQL, bộ nhớ đệm), cơ chế đồng bộ và tối ưu hóa câu lệnh truy vấn.
+* **Sẵn sàng cho sự nghiệp Cloud:** Bên cạnh các chứng chỉ, việc có trải nghiệm thực hành (như triển khai container, serverless function, thiết lập hạ tầng mạng bảo mật) là yếu tố quyết định tạo nên sự khác biệt khi ứng tuyển.
 
-#### Amazon Q Developer
+---
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+### Ứng dụng vào dự án NodeJ2Car
+Kiến thức và kinh nghiệm thu nhận từ sự kiện Swinburne Cloud Mastery 2026 đã được áp dụng trực tiếp để tối ưu hóa dự án **NodeJ2Car**:
+1. **Kiến trúc dữ liệu tối ưu:** Từ chia sẻ của anh Cam Vinh Banh về các thách thức dữ liệu, chúng tôi đã hoàn thiện cấu trúc DB, triển khai DocumentDB Replica Nodes để định tuyến truy vấn đọc độc lập và kết hợp ElastiCache Redis giảm tải cho database chính.
+2. **Chuẩn hóa vận hành Cloud:** Những lời khuyên từ anh Khang Nguyen về chuẩn triển khai doanh nghiệp đã thúc đẩy chúng tôi tối ưu cấu hình ECS Fargate và SQS Worker, đảm bảo hệ thống NodeJ2Car đáp ứng các tiêu chuẩn về mở rộng tự động và xử lý hàng đợi bất đồng bộ.
 
-### Những Gì Học Được
+---
 
-#### Tư Duy Thiết Kế
+### Cảm nhận cá nhân
+Swinburne Cloud Mastery 2026 là một buổi chia sẻ đầy cảm hứng. Nhìn thấy ngọn lửa đam mê công nghệ từ các bạn sinh viên Swinburne Cần Thơ và TP.HCM, kết hợp với những lời khuyên chân thành và thực tế từ các chuyên gia như anh Nguyễn Gia Hưng và anh Khang Nguyen, tôi đã có thêm rất nhiều động lực trên hành trình chinh phục công nghệ đám mây. Sự kiện giúp tôi nhận ra rằng việc xây dựng sự nghiệp công nghệ thành công không chỉ dừng lại ở viết code mà phải là hiểu cách hệ thống của chúng ta đóng góp vào mục tiêu chung của doanh nghiệp.
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+---
 
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+### Ảnh minh chứng sự kiện
+![Swinburne Cloud Mastery 2026 Presentation](/images/4-EventParticipated/event2.jpg)

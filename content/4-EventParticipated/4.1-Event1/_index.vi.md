@@ -1,122 +1,84 @@
-title: "Event 1"
-date: 2024-01-01
+---
+title: "Mini Meetup – First Cloud AI Journey"
+date: 2026-06-13
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
- 
+# Báo cáo thu hoạch: Mini Meetup – First Cloud AI Journey
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Thông tin sự kiện
+* **Tên sự kiện:** Mini Meetup – First Cloud AI Journey
+* **Thời gian:** 13/06/2026 (09:00 - 12:00)
+* **Địa điểm:** AWS Office – Grand Terra, 36 Cát Linh, Hà Nội
+* **Vai trò:** Người tham dự
+
+---
 
 ### Mục Đích Của Sự Kiện
+Mini Meetup – First Cloud AI Journey là buổi chia sẻ kiến thức được tổ chức bởi cộng đồng First Cloud AI Journey (FCAJ), nhằm tạo môi trường học tập, trao đổi và kết nối giữa các thành viên yêu thích lĩnh vực Cloud Computing và AI.
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+Mục tiêu của chương trình gồm:
+* Chia sẻ kiến thức thực tiễn về hạ tầng Cloud, quản trị máy chủ và nền tảng dữ liệu hiện đại.
+* Giúp người tham dự hiểu rõ hơn về các công nghệ đang được doanh nghiệp sử dụng trong quá trình chuyển đổi số.
+* Khuyến khích tinh thần **Learn • Build • Share • Grow**, tạo cơ hội giao lưu, học hỏi và phát triển kỹ năng cùng cộng đồng.
 
-### Danh Sách Diễn Giả
+---
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+### Tóm Tắt Nội Dung Các Bài Chia Sẻ
 
-### Nội Dung Nổi Bật
+#### 1. How to Connect to a Virtual Machine
+* **Diễn giả:** Mr. Hải Hiếu
+* **Nội dung chính:**
+  * Giới thiệu khái niệm Virtual Machine (VM) và vai trò của VM trong hạ tầng điện toán đám mây.
+  * Hướng dẫn các phương pháp kết nối đến Virtual Machine, đặc biệt là thông qua giao thức SSH.
+  * Giải thích cơ chế hoạt động của SSH, bao gồm xác thực bằng SSH Key và Public Key Authentication.
+  * Chia sẻ các nguyên tắc bảo mật khi truy cập máy chủ như giới hạn quyền truy cập, bảo vệ Private Key, sử dụng Security Group và hạn chế mở cổng SSH công khai.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### 2. Migrate to Modern Data Stack Using Snowflake and AWS
+* **Diễn giả:** Mr. Vũ Thế Huy
+* **Nội dung chính:**
+  * Giới thiệu khái niệm **Modern Data Stack** và xu hướng hiện đại hóa hệ thống dữ liệu trong doanh nghiệp.
+  * Phân tích những hạn chế của mô hình Data Warehouse truyền thống và lợi ích khi chuyển sang Snowflake.
+  * Trình bày cách Snowflake kết hợp với các dịch vụ AWS để xây dựng nền tảng dữ liệu hiện đại, có khả năng mở rộng và tối ưu chi phí.
+  * Minh họa quy trình lưu trữ, xử lý và phân tích dữ liệu phục vụ Business Intelligence (BI) và Data Analytics.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+---
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+### Những Bài Học Rút Ra & Trải Nghiệm Thực Tế
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### 1. Quản Trị Hạ Tầng Cloud
+* **Kết nối và bảo mật máy chủ:** Hiểu rõ cách hoạt động của SSH giúp việc quản trị máy chủ Linux trên AWS EC2 trở nên an toàn hơn. Đồng thời nhận thức được tầm quan trọng của việc bảo vệ SSH Key, cấu hình Security Group hợp lý và hạn chế truy cập trái phép.
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+* **Thực hành triển khai hạ tầng:** Kiến thức về Virtual Machine giúp củng cố nền tảng khi triển khai các dịch vụ trên AWS, đặc biệt trong quá trình cài đặt và quản lý máy chủ ứng dụng.
 
-#### Domain-Driven Design (DDD)
+#### 2. Quản Lý Dữ Liệu Hiện Đại
+* **Modern Data Stack:** Hiểu được xu hướng doanh nghiệp chuyển đổi sang các nền tảng dữ liệu hiện đại nhằm tăng khả năng mở rộng, giảm chi phí vận hành và nâng cao hiệu quả khai thác dữ liệu.
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+* **AWS kết hợp Snowflake:** Việc tích hợp Snowflake với các dịch vụ AWS giúp xây dựng hệ thống phân tích dữ liệu linh hoạt, hỗ trợ xử lý khối lượng dữ liệu lớn phục vụ các ứng dụng AI và Business Intelligence.
 
-#### Event-Driven Architecture
+---
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Ứng Dụng Thực Tế Vào Dự Án NodeJ2Car
 
-#### Compute Evolution
+Những kiến thức tiếp thu từ buổi Mini Meetup có thể áp dụng trực tiếp vào dự án **NodeJ2Car** như sau:
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+1. **Quản lý máy chủ EC2:** Áp dụng quy trình kết nối SSH an toàn khi triển khai Backend Node.js trên Amazon EC2, sử dụng SSH Key Authentication và cấu hình Security Group để bảo vệ hệ thống.
 
-#### Amazon Q Developer
+2. **Tăng cường bảo mật hệ thống:** Thiết lập nguyên tắc phân quyền truy cập, giới hạn IP được phép SSH và quản lý khóa truy cập nhằm giảm thiểu rủi ro tấn công.
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+3. **Định hướng xây dựng hệ thống dữ liệu:** Kiến thức về Modern Data Stack giúp định hướng phát triển hệ thống lưu trữ và phân tích dữ liệu trong tương lai, kết hợp các dịch vụ AWS với các nền tảng phân tích dữ liệu hiện đại để hỗ trợ thống kê doanh số, hành vi người dùng và báo cáo kinh doanh.
 
-### Những Gì Học Được
+---
 
-#### Tư Duy Thiết Kế
+### Trải Nghiệm Cá Nhân
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+Mini Meetup – First Cloud AI Journey mang đến không gian học tập gần gũi, nơi người tham dự có thể trao đổi trực tiếp với các diễn giả và cộng đồng yêu thích Cloud Computing. Nội dung chương trình tập trung vào các kiến thức thực tiễn, dễ áp dụng vào quá trình học tập và phát triển dự án cá nhân.
 
-#### Kiến Trúc Kỹ Thuật
+Thông qua buổi chia sẻ, tôi hiểu rõ hơn về cách quản trị máy chủ trên AWS, các nguyên tắc bảo mật khi kết nối đến Virtual Machine cũng như xu hướng xây dựng nền tảng dữ liệu hiện đại với Snowflake và AWS. Đây là những kiến thức hữu ích giúp tôi có thêm kinh nghiệm để áp dụng vào các dự án Cloud trong quá trình học tập và thực tập sau này.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+---
 
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+### Ảnh minh chứng sự kiện
+![AWS Community Day Vietnam 2026 Presentation](/images/4-EventParticipated/event1.jpg)

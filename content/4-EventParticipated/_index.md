@@ -5,7 +5,7 @@ weight: 4
 chapter: false
 pre: " <b> 4. </b> "
 ---
- 
+
 > In this section, you should list and describe in detail the events you have participated in during your internship or work experience.  
 > 
 > Each event should be presented in the format Event 1, Event 2, Event 3…, along with the following details:
@@ -20,21 +20,21 @@ pre: " <b> 4. </b> "
 During my internship, I participated in two events. Each one was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-Event1/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Event Name:** Mini Meetup – First Cloud AI Journey  
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Date & Time:** June 23, 2026  (08:30 - 12:00)
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Location:** Ho Chi Minh City, Vietnam  
 
 &emsp;**Role:** Attendee  
 
 ---
 
 ### [Event 2](4.2-Event2/)  
-&emsp;**Event Name:** GenAI-powered App-DB Modernization workshop  
+&emsp;**Event Name:** Swinburne Cloud Mastery 2026  
 
-&emsp;**Date & Time:** 09:00, August 13, 2025  
+&emsp;**Date & Time:** July 11, 2026 (08:30 - 12:00)  
 
-&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+&emsp;**Location:** Swinburne Vietnam HCMC Campus, A35 Bạch Đằng Street, Tân Bình District, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  

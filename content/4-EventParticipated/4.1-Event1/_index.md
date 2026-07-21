@@ -1,122 +1,82 @@
 ---
-title: "Event 1"
-date: 2024-01-01
+title: "Mini Meetup – First Cloud AI Journey"
+date: 2026-06-13
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
- 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+
+# Harvest Report: Mini Meetup – First Cloud AI Journey
+
+### Event Information
+* **Event Name:** Mini Meetup – First Cloud AI Journey
+* **Date & Time:** June 13, 2026 (09:00 - 12:00)
+* **Location:** AWS Office – Grand Terra, 36 Cat Linh, Hanoi, Vietnam
+* **Role:** Attendee
+
+---
 
 ### Event Objectives
+Mini Meetup – First Cloud AI Journey is a community knowledge-sharing event organized by the First Cloud AI Journey (FCAJ) community. The objectives of the event are:
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
+* Share practical knowledge about cloud infrastructure, virtual machines, and modern data platforms.
+* Introduce technologies widely adopted by enterprises during their digital transformation journey.
+* Encourage participants to learn, build, share experiences, and grow together through the FCAJ community spirit: **Learn • Build • Share • Grow**.
 
-### Speakers
+---
 
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+### Key Presentation Highlights
 
-### Key Highlights
+#### 1. How to Connect to a Virtual Machine
+* **Speaker:** Mr. Hải Hiếu
+* **Key Topics:**
+  * Introduced the fundamentals of Virtual Machines (VMs) and their role in cloud computing.
+  * Explained different methods for connecting to a virtual machine, especially through the Secure Shell (SSH) protocol.
+  * Demonstrated how SSH authentication works using Public Key and Private Key authentication.
+  * Shared security best practices such as protecting private keys, restricting SSH access with Security Groups, and minimizing exposure of SSH ports to the public Internet.
 
-#### Identifying the drawbacks of legacy application architecture
+#### 2. Migrate to Modern Data Stack Using Snowflake and AWS
+* **Speaker:** Mr. Vũ Thế Huy
+* **Key Topics:**
+  * Introduced the concept of the Modern Data Stack and its growing adoption across modern enterprises.
+  * Compared traditional data warehouse architectures with Snowflake's cloud-native approach.
+  * Demonstrated how Snowflake integrates with AWS services to build scalable, high-performance, and cost-efficient data platforms.
+  * Discussed how modern data architectures support Business Intelligence (BI), analytics, and data-driven decision making.
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+---
 
-#### Transitioning to modern application architecture – Microservices
+### Key Takeaways & Lessons Learned
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### 1. Cloud Infrastructure Management
+* **Secure Server Administration:** Understanding SSH and Virtual Machine connectivity helps administrators securely manage cloud servers while protecting infrastructure against unauthorized access.
+* **Cloud Deployment Best Practices:** Proper configuration of SSH keys, Security Groups, and access control policies significantly improves the security and reliability of cloud-hosted applications.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### 2. Modern Data Architecture
+* **Understanding Modern Data Stack:** Modern enterprises are shifting from traditional on-premise databases toward cloud-native platforms that provide greater scalability, flexibility, and lower operational costs.
+* **AWS + Snowflake Integration:** Combining AWS infrastructure with Snowflake enables organizations to build efficient data platforms capable of supporting analytics, reporting, and AI-powered applications.
 
-#### Domain-Driven Design (DDD)
+---
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+### Applying to NodeJ2Car Project
 
-#### Event-Driven Architecture
+The knowledge gained from the meetup can be directly applied to the **NodeJ2Car** project in several ways:
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
+1. **Secure EC2 Administration:** Apply secure SSH authentication and properly configure Security Groups when deploying the Node.js backend on Amazon EC2.
 
-#### Compute Evolution
+2. **Infrastructure Security:** Strengthen server security by limiting SSH access, protecting SSH private keys, and implementing appropriate access control policies.
 
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
+3. **Future Data Platform Planning:** The concepts of the Modern Data Stack provide valuable insights for designing future data analytics systems, enabling business reporting, user behavior analysis, and scalable data management using AWS services.
 
-#### Amazon Q Developer
+---
 
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
+### Personal Reflections
 
-### Key Takeaways
+Mini Meetup – First Cloud AI Journey provided a friendly and collaborative learning environment where participants could directly interact with experienced speakers and fellow cloud enthusiasts. The sessions focused on practical knowledge that can be immediately applied to real-world projects.
 
-#### Design Mindset
+Through this event, I gained a deeper understanding of Virtual Machine administration, SSH security practices, and the fundamentals of modern cloud data platforms using Snowflake and AWS. These insights will help me improve my cloud deployment skills and better prepare for future software engineering and cloud computing projects.
 
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
+---
 
-#### Technical Architecture
+### Event Evidence
 
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
-
-### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+![Mini Meetup – First Cloud AI Journey](/images/4-EventParticipated/event1.jpg)

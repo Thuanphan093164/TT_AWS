@@ -1,44 +1,58 @@
 ---
-title: "Chuẩn bị môi trường"
-date: 2024-01-01
-weight: 1
-chapter: false
-pre: " <b> 5.4.1. </b> "
+title : "Chuẩn bị tài nguyên"
+date : 2024-01-01
+weight : 1
+chapter : false
+pre : " <b> 5.4.1 </b> "
 ---
 
-## Chuẩn Bị Môi Trường Giả Lập & Cấu Hình VPN Route
+Để chuẩn bị cho phần này của workshop, bạn sẽ cần phải:
++ Triển khai CloudFormation stack
++ Sửa đổi bảng định tuyến VPC.
 
-Để mô phỏng kết nối từ on-premises của J2Car AutoParts lên AWS Cloud, tôi đã cấu hình một đường truyền Site-to-Site VPN sử dụng strongSwan VPN trên một EC2 instance nằm ở phân vùng giả lập mạng On-prem.
+Các thành phần này hoạt động cùng nhau để mô phỏng DNS forwarding và name resolution.
 
----
+#### Triển khai CloudFormation stack
 
-### 1. Triển khai các tài nguyên Route 53 Resolver bằng CloudFormation
+Mẫu CloudFormation sẽ tạo các dịch vụ bổ sung để hỗ trợ mô phỏng môi trường truyền thống:
++ Một Route 53 Private Hosted Zone lưu trữ các bản ghi Bí danh (Alias records) cho điểm cuối PrivateLink S3
++ Một Route 53 Inbound Resolver endpoint cho phép "VPC Cloud" giải quyết các yêu cầu resolve DNS gửi đến Private Hosted Zone
++ Một Route 53 Outbound Resolver endpoint cho phép "VPC On-prem" chuyển tiếp các yêu cầu DNS cho S3 sang "VPC Cloud"
 
-Tôi tiến hành deploy CloudFormation template để tạo hạ tầng phân giải DNS giả lập:
-- **Route 53 Private Hosted Zone:** Quản lý bản ghi Alias cho PrivateLink S3 Endpoint.
-- **Inbound Resolver Endpoint:** Nhận các yêu cầu phân giải DNS đi vào từ on-premises.
-- **Outbound Resolver Endpoint:** Cho phép VPC On-prem chuyển tiếp yêu cầu DNS của S3 về VPC Cloud để xử lý.
+![route 53 diagram](/images/5-Workshop/5.4-S3-onprem/route53.png)
 
-```bash
-aws cloudformation create-stack \
-  --stack-name J2Car-Resolver-Endpoints \
-  --template-body file://j2car-resolver.yaml \
-  --region ap-southeast-1
-```
+1. Click link sau để mở [AWS CloudFormation console](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.amazonaws.com/reinvent-endpoints-builders-session/R53CF.yaml&stackName=PLOnpremSetup). Mẫu yêu cầu sẽ được tải sẵn vào menu. Chấp nhận tất cả mặc định và nhấp vào Tạo stack.
 
----
+![Create stack](/images/5-Workshop/5.4-S3-onprem/create-stack.png)
 
-### 2. Cấu hình bảng định tuyến Route Table cho Private On-prem
+![Button](/images/5-Workshop/5.4-S3-onprem/create-stack-button.png)
 
-Để định tuyến toàn bộ lưu lượng hướng về AWS Cloud đi qua strongSwan VPN Gateway:
+Có thể mất vài phút để triển khai stack hoàn tất. Bạn có thể tiếp tục với bước tiếp theo mà không cần đợi quá trình triển khai kết thúc.
 
-1. Mở dịch vụ **Amazon EC2 Console**.
-2. Tìm EC2 instance có tên `infra-vpngw-test` (VPN Gateway của On-premises), sao chép **Instance ID** của nó.
-3. Chuyển sang dịch vụ **Amazon VPC Console**, nhấp chọn **Route Tables**.
-4. Chọn bảng định tuyến **RT Private On-prem**, nhấp chọn tab **Routes** và chọn **Edit Routes**.
-5. Nhấp **Add route**:
-   - **Destination:** Nhập dải CIDR của Cloud VPC (`10.0.0.0/16`).
-   - **Target:** Chọn **Instance** và dán ID của instance `infra-vpngw-test` mà bạn vừa sao chép.
-6. Nhấp **Save changes** để lưu cấu hình.
+####  Cập nhật bảng định tuyến private on-premise 
 
-Tuyến đường VPN kết nối an toàn từ on-premises tới đám mây AWS đã được thiết lập hoàn tất.
+Workshop này sử dụng StrongSwan VPN chạy trên EC2 instance để mô phỏng khả năng kết nối giữa trung tâm dữ liệu truyền thống và môi trường cloud AWS. Hầu hết các thành phần bắt buộc đều được cung cấp trước khi bạn bắt đầu. Để hoàn tất cấu hình VPN, bạn sẽ sửa đổi bảng định tuyến "VPC on-prem" để hướng lưu lượng đến cloud đi qua StrongSwan VPN instance.
+
+1. Mở Amazon EC2 console 
+
+2. Chọn instance tên infra-vpngw-test. Từ Details tab, copy Instance ID và paste vào text editor của bạn để sử dụng ở những bước tiếp theo
+
+![ec2 id](/images/5-Workshop/5.4-S3-onprem/ec2-onprem-id.png)
+
+3. Đi đến VPC menu bằng cách gõ "VPC" vào Search box
+
+4. Click vào Route Tables, chọn RT Private On-prem route table, chọn Routes tab, và click Edit Routes.
+
+![rt](/images/5-Workshop/5.4-S3-onprem/rt.png)
+
+5. Click Add route.
++ Destination: CIDR block của Cloud VPC
++ Target: ID của infra-vpngw-test instance (bạn đã lưu lại ở bước trên)
+
+![add route](/images/5-Workshop/5.4-S3-onprem/add-route.png)
+
+6. Click Save changes
+
+
+
+

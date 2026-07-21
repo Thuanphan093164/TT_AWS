@@ -1,34 +1,37 @@
 ---
-title: "Bài 6: Dọn dẹp tài nguyên"
-date: 2024-01-01
-weight: 6
-chapter: false
-pre: " <b> 5.6. </b> "
+title : "Dọn dẹp tài nguyên"
+date : 2024-01-01
+weight : 6
+chapter : false
+pre : " <b> 5.6. </b> "
 ---
 
-## Bài 6: Dọn dẹp tài nguyên (Clean Up)
+#### Dọn dẹp tài nguyên
 
-Sau khi hoàn thành thử nghiệm và kiểm chứng toàn bộ hệ thống phân giải DNS giả lập cũng như các kết nối Gateway/Interface VPC Endpoints cho Amazon S3 của J2Car AutoParts, việc dọn dẹp các tài nguyên tạm thời là cần thiết để tối ưu chi phí sử dụng tài khoản AWS.
+Xin chúc mừng bạn đã hoàn thành xong lab này!
+Trong lab này, bạn đã học về các mô hình kiến trúc để truy cập Amazon S3 mà không sử dụng Public Internet.
 
----
++ Bằng cách tạo Gateway endpoint, bạn đã cho phép giao tiếp trực tiếp giữa các tài nguyên EC2 và Amazon S3, mà không đi qua Internet Gateway.
+Bằng cách tạo Interface endpoint, bạn đã mở rộng kết nối S3 đến các tài nguyên chạy trên trung tâm dữ liệu trên chỗ của bạn thông qua AWS Site-to-Site VPN hoặc Direct Connect.
 
-### Quy trình dọn dẹp tài nguyên lý thuyết
+#### Dọn dẹp
+1. Điều hướng đến Hosted Zones trên phía trái của bảng điều khiển Route 53. Nhấp vào tên của  s3.us-east-1.amazonaws.com zone. Nhấp vào Delete và xác nhận việc xóa bằng cách nhập từ khóa "delete".
 
-Để giải phóng hoàn toàn hạ tầng của bài lab này, thứ tự xóa tài nguyên cần tuân thủ như sau:
+![hosted zone](/images/5-Workshop/5.6-Cleanup/delete-zone.png)
 
-1. **Xóa các tài nguyên DNS:**
-   - Xóa các forwarding rules trong Route 53 Resolver Rules.
-   - Xóa các Private Hosted Zones và DNS Alias Records.
-2. **Xóa các VPC Endpoints:**
-   - Chọn và xóa Gateway Endpoint (`s3-gwe`).
-   - Chọn và xóa Interface Endpoint (`s3-interface-endpoint`).
-3. **Xóa các CloudFormation Stacks:**
-   - Xóa Stack `J2Car-Resolver-Endpoints` (Đợi hoàn tất).
-   - Xóa Stack hạ tầng mạng chính `J2Car-Workshop-Network` (Sẽ tự động giải phóng toàn bộ VPC, NAT Gateways, Subnets và các Route Tables).
-4. **Xóa S3 Buckets:**
-   - Làm rỗng (Empty) và xóa các S3 Buckets tạm thời.
+2. Disassociate Route 53 Resolver Rule - myS3Rule from "VPC Onprem" and Delete it. 
 
----
+![hosted zone](/images/5-Workshop/5.6-Cleanup/vpc.png)
 
-> [!IMPORTANT]
-> Nhằm duy trì hệ thống chạy thực tế ổn định để phục vụ quá trình bảo vệ workshop và viết báo cáo, toàn bộ các tài nguyên mạng, database, ECR, ECS và SQS của dự án **J2Car AutoParts** trên tài khoản AWS của bạn **vẫn được giữ nguyên** và không chạy lệnh xóa thực tế.
+4.Mở console của CloudFormation và xóa hai stack CloudFormation mà bạn đã tạo cho bài thực hành này:
++ PLOnpremSetup
++ PLCloudSetup
+
+![delete stack](/images/5-Workshop/5.6-Cleanup/delete-stack.png)
+
+5. Xóa các S3 bucket
+
++ Mở bảng điều khiển S3
++ Chọn bucket chúng ta đã tạo cho lab, nhấp chuột và xác nhận là empty. Nhấp Delete và xác nhận delete.
++ 
+![delete s3](/images/5-Workshop/5.6-Cleanup/delete-s3.png)

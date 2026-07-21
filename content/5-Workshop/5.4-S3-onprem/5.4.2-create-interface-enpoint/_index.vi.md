@@ -1,38 +1,43 @@
 ---
-title: "Tạo S3 Interface Endpoint"
-date: 2024-01-01
-weight: 2
-chapter: false
-pre: " <b> 5.4.2. </b> "
+title : "Tạo một S3 Interface endpoint"
+date : 2024-01-01
+weight : 2
+chapter : false
+pre : " <b> 5.4.2 </b> "
 ---
 
-## Khởi Tạo S3 Interface Endpoint (AWS PrivateLink)
+Trong phần này, bạn sẽ tạo và kiểm tra Interface Endpoint  S3 bằng cách sử dụng môi trường truyền thống mô phỏng.
 
-Tôi tiến hành khởi tạo một **Interface Endpoint** cho S3 nằm trong VPC Cloud. Điểm cuối giao diện này sẽ cấp phát một địa chỉ IP nội bộ cố định cho S3 trong mỗi phân vùng Availability Zone, cho phép định tuyến dữ liệu từ VPN On-premises.
+1. Quay lại Amazon VPC menu. Trong thanh điều hướng bên trái, chọn Endpoints, sau đó click Create Endpoint.
 
----
+2. Trong Create endpoint console:
++ Đặt tên interface endpoint
++ Trong Service category, chọn **aws services** 
 
-### Các bước cấu hình trên AWS Console
+![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
 
-1. Mở dịch vụ **Amazon VPC Console** tại vùng Singapore (`ap-southeast-1`).
-2. Trên thanh menu bên trái, chọn **Endpoints** và click **Create Endpoint**.
-3. Tại giao diện cấu hình khởi tạo Endpoint:
-   - **Name tag:** Nhập tên `s3-interface-endpoint`.
-   - **Service category:** Chọn **AWS services**.
-   - **Services:** Nhập tìm kiếm `s3` và chọn dịch vụ `com.amazonaws.ap-southeast-1.s3` có Type là **Interface**.
-   - **VPC:** Chọn **J2Car-workshop-VPC** (Hãy chắc chắn chọn VPC Cloud và KHÔNG chọn VPC On-prem).
-   - **Additional settings:** Đảm bảo **Enable DNS name** được bỏ chọn (chúng ta sẽ cấu hình phân giải DNS tùy biến thông qua Private Hosted Zone ở bước sau).
-   - **Subnets:** Chọn 2 subnets tương ứng trong các Availability Zones: `ap-southeast-1a` và `ap-southeast-1b`.
-   - **Security group:** Chọn nhóm bảo mật **SGforS3Endpoint** (đã được cấu hình mở cổng 443 HTTPS từ dải On-prem).
-   - **Policy:** Giữ nguyên cấu hình mặc định **Full Access**.
-4. Nhấp **Create endpoint** để tạo.
+3.  Trong Search box, gõ S3 và nhấn Enter. Chọn endpoint có tên com.amazonaws.us-east-1.s3. Đảm bảo rằng cột Type có giá trị Interface.
 
----
+![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
 
-### Minh Chứng Thực Tế Trên AWS Console
+4. Đối với VPC, chọn VPC Cloud từ drop-down.
+{{% notice warning %}}
+Đảm bảo rằng bạn chọn "VPC Cloud" và không phải "VPC On-prem"
+{{% /notice %}}
++ Mở rộng **Additional settings** và đảm bảo rằng Enable DNS name *không* được chọn (sẽ sử dụng điều này trong phần tiếp theo của workshop)
 
-Sau khi khởi tạo thành công, giao diện quản trị hiển thị trạng thái hoạt động:
+![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
 
-#### Endpoint s3-interface-endpoint ở trạng thái Available:
-![S3 Interface Endpoint thực tế](/images/5-Workshop/4-endpoints.png)
-*(Trong danh sách sẽ xuất hiện thêm một dòng Endpoint có Type là Interface, liên kết với IP Private của VPC Cloud).*
+5. Chọn 2 subnets trong AZs sau: us-east-1a and us-east-1b
+
+![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+
+6. Đối với Security group, chọn SGforS3Endpoint:
+
+![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+
+7. Giữ default policy - full access và click Create endpoint
+
+![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+
+Chúc mừng bạn đã tạo thành công S3 interface endpoint. Ở bước tiếp theo, chúng ta sẽ kiểm tra interface endpoint.

@@ -6,279 +6,112 @@ chapter: false
 pre: " <b> 2. </b> "
 ---
 
-# BẢN ĐỀ XUẤT DỰ ÁN: J2CAR AUTOPARTS
+# Nền tảng Thương mại Điện tử Phụ tùng Ô tô NodeJ2Car  
+## Giải pháp AWS Cloud tối ưu hóa hiệu năng, bảo mật và mở rộng linh hoạt  
+
+### 1. Tóm tắt điều hành  
+Dự án **NodeJ2Car** xây dựng một hệ thống thương mại điện tử chuyên biệt cung cấp phụ tùng ô tô cao cấp. Nền tảng nổi bật với ba tính năng đột phá: Bản vẽ sơ đồ xe tương tác 2D trực quan, Chat hỗ trợ trực tuyến thời gian thực qua WebSockets và Tìm kiếm phụ tùng lỗi bằng hình ảnh quét AI. Để đáp ứng nhu cầu giao dịch trực tuyến chịu tải lớn, bảo mật tuyệt đối thông tin khách hàng và xử lý thanh toán bất đồng bộ tin cậy (Momo, VNPay, Stripe), toàn bộ hệ thống được triển khai trên đám mây AWS theo mô hình hybrid container-serverless. Giải pháp này giúp NodeJ2Car đạt độ sẵn sàng cao (High Availability), tự động mở rộng theo tải (Auto Scaling) và giảm thiểu tối đa chi phí vận hành thực tế.
+
+### 2. Tuyên bố vấn đề  
+*Vấn đề hiện tại*  
+1. **Trải nghiệm tìm kiếm phụ tùng phức tạp:** Phụ tùng ô tô có hàng triệu mã linh kiện khác nhau. Khách hàng thông thường gặp rất nhiều khó khăn và dễ nhầm lẫn khi tìm mua linh kiện phù hợp với đời xe của mình qua thanh tìm kiếm văn bản truyền thống.
+2. **Quá tải hệ thống khi tích hợp luồng xử lý thời gian thực:** Kết nối chat thời gian thực qua Socket.io và xử lý Webhook thanh toán (IPN) đồng thời rất dễ làm tắc nghẽn máy chủ chính, dẫn đến rủi ro sập hệ thống hoặc thất thoát giao dịch của khách hàng.
+3. **Mối đe dọa bảo mật và tấn công mạng:** Một trang web thương mại điện tử chứa thông tin cá nhân và tài chính của người dùng luôn là mục tiêu của các cuộc tấn công DDoS, SQL Injection và đánh cắp dữ liệu.
+
+*Giải pháp*  
+Hệ thống giải quyết triệt để các vấn đề trên thông qua sự kết hợp của phần mềm hiện đại và hạ tầng đám mây AWS:
+*   **Sơ đồ 2D trực quan (Schematics) & AI Scan Image:** Giúp đơn giản hóa quá trình tìm kiếm phụ tùng chính xác mà không cần nhớ mã linh kiện.
+*   **Phát tải bất đồng bộ luồng thanh toán:** Tách biệt hoàn toàn luồng xử lý Webhook IPN bằng dịch vụ không máy chủ **AWS Lambda** và hàng đợi tin nhắn **Amazon SQS**, đảm bảo thông tin thanh toán luôn được xếp hàng bảo toàn và xử lý thành công ngay cả khi máy chủ API gặp sự cố.
+*   **Chia sẻ tải Socket.io:** Sử dụng **Amazon ElastiCache Redis** làm bộ điều phối (Redis Adapter) giúp đồng bộ hóa dữ liệu chat realtime trên toàn cụm máy chủ Backend.
+*   **Bảo vệ biên toàn diện:** Toàn bộ hệ thống Backend được giấu hoàn toàn trong Private Subnets đứng sau **Application Load Balancer (ALB)**, bảo vệ vòng ngoài bằng **AWS WAF** và **CloudFront CDN**.
+
+*Lợi ích và hoàn vốn đầu tư (ROI)*  
+*   **Tăng tỷ lệ chuyển đổi đơn hàng:** Tiết kiệm 70% thời gian tìm kiếm phụ tùng của khách hàng nhờ bản đồ sơ đồ và AI Scan, giúp nâng cao doanh số.
+*   **Đảm bảo tính sẵn sàng 99.99%:** Kiến trúc đa vùng Availability Zone (Multi-AZ) trên ECS Fargate giúp hệ thống hoạt động liên tục, không bị gián đoạn.
+*   **Tối ưu hóa chi phí hạ tầng:** Việc sử dụng các dịch vụ Serverless và Auto Scaling giúp chi phí đám mây bám sát lưu lượng sử dụng thực tế (Pay-as-you-go), tránh lãng phí khi nhàn rỗi. Thời gian hoàn vốn dự kiến trong vòng 6 tháng đầu hoạt động nhờ tiết kiệm chi phí nhân sự quản trị và giảm thiểu tỷ lệ rớt đơn hàng.
 
 ---
 
-## 1. Tóm Tắt Điều Hành (Executive Summary)
+### 3. Kiến trúc giải pháp  
+Hệ thống sử dụng mạng ảo **Amazon VPC** làm nền tảng an ninh, chia làm các phân vùng Public và Private Subnets hoạt động trên 2 vùng sẵn sàng (AZ) độc lập. Mọi yêu cầu truy cập từ bên ngoài được kiểm duyệt bởi **AWS WAF** và **Amazon CloudFront** trước khi phân phối vào mạng nội bộ.
 
-**J2Car AutoParts** là một hệ thống thương mại điện tử chuyên biệt về phụ tùng ô tô, được thiết kế và triển khai hoàn toàn trên nền tảng **Amazon Web Services (AWS)**. Nền tảng tích hợp đầy đủ các tính năng hiện đại bao gồm: tra cứu phụ tùng bằng số VIN, giỏ hàng và đặt hàng trực tuyến, chat hỗ trợ khách hàng thời gian thực (Real-time), và tích hợp đa cổng thanh toán (VNPay, MoMo, Stripe).
+![Kiến trúc tổng quan AWS](/images/5-Workshop/architecture.png)
 
-Kiến trúc được xây dựng theo mô hình **3-Tier Architecture (Presentation - Logic - Data)**, triển khai đa vùng sẵn sàng **(Multi-AZ: AZ1 & AZ2)** trong Region **`ap-southeast-1` (Singapore)** nhằm đảm bảo:
-- **High Availability:** Hệ thống hoạt động liên tục 24/7, không gián đoạn dù có sự cố tại một AZ.
-- **Scalability:** Tự động mở rộng tài nguyên theo lưu lượng thực tế, xử lý đỉnh tải Flash Sale mà không cần can thiệp thủ công.
-- **Security:** Tuân thủ chặt chẽ tiêu chuẩn **AWS Well-Architected Framework**, áp dụng nguyên tắc Zero Trust và Least Privilege.
-- **Cost Optimization:** Kiến trúc Serverless (Fargate, Lambda) giúp chỉ trả phí cho tài nguyên thực sự sử dụng.
+*Dịch vụ AWS sử dụng*  
+*   **Amazon VPC:** Nền tảng thiết lập cấu trúc mạng an toàn (Public/Private Subnets, NAT Gateways).
+*   **Amazon ECS & AWS Fargate:** Chạy các tác vụ Backend NodeJS trong container một cách tự động, co giãn linh hoạt.
+*   **Application Load Balancer (ALB):** Cân bằng tải cho các ECS tasks, hỗ trợ Sticky Sessions duy trì kết nối WebSocket.
+*   **Amazon DocumentDB:** Hệ cơ sở dữ liệu lưu trữ chính tương thích MongoDB, cấu hình Primary (ghi) và Replica (đọc).
+*   **Amazon ElastiCache Redis:** Bộ nhớ đệm chia sẻ phiên chat Socket.io và cache dữ liệu sản phẩm.
+*   **AWS Lambda & Amazon SQS:** Xử lý Webhook thanh toán và hàng đợi giao dịch bất đồng bộ.
+*   **Amazon S3 & S3 Gateway Endpoint:** Lưu trữ mã nguồn tĩnh Frontend (React SPA) và tệp tin ảnh sản phẩm, kết nối trực tiếp nội bộ an toàn.
+*   **Amazon CloudFront & AWS WAF:** Hệ thống CDN tăng tốc tải trang và tường lửa ứng dụng web chống tấn công.
+*   **Amazon ECR:** Lưu trữ Docker Image của Backend.
 
----
-
-## 2. Tuyên Bố Vấn Đề (Problem Statement)
-
-### 2.1. Vấn Đề Hiện Tại
-- Hệ thống bán phụ tùng ô tô truyền thống yêu cầu nhân viên tư vấn tra cứu thủ công, gây chậm trễ và sai sót.
-- Khách hàng không tự tra được phụ tùng phù hợp với xe của mình (thiếu công cụ giải mã VIN).
-- Không có kênh giao tiếp Real-time giữa khách hàng và đội ngũ hỗ trợ kỹ thuật.
-- Quy trình thanh toán còn thủ công, rủi ro mất dữ liệu hóa đơn khi hệ thống gặp sự cố.
-
-### 2.2. Giải Pháp Đề Xuất
-J2Car AutoParts giải quyết toàn bộ các vấn đề trên thông qua nền tảng web hiện đại với Backend phân tán, xử lý bất đồng bộ và tích hợp sâu với hệ sinh thái AWS.
-
-### 2.3. Lợi Ích & ROI
-- Tự động hóa 100% quy trình tra cứu phụ tùng, đặt hàng và thanh toán.
-- Giảm thiểu sai sót nghiệp vụ nhờ luồng xử lý đơn hàng tự động qua SQS + Lambda.
-- Nâng cao trải nghiệm khách hàng nhờ Chat Real-time và thông báo trạng thái đơn hàng tức thì.
-- Kiến trúc Pay-as-you-go tối ưu chi phí vận hành dài hạn.
+*Thiết kế thành phần*  
+*   **Frontend (Giao diện):** Đóng gói React SPA đặt tại S3 Web Bucket, truyền tải qua CloudFront CDN.
+*   **Backend (Xử lý logic):** Container NodeJS chạy trên ECS Fargate trong Private Subnet, định tuyến bởi ALB.
+*   **Integration (Tích hợp):** Webhook IPN gọi trực tiếp tới AWS Lambda, ghi nhận hóa đơn vào SQS, ECS worker rút tin nhắn chốt đơn hàng và thông báo trạng thái.
+*   **Database (Dữ liệu):** DocumentDB Cluster phân chia luồng Ghi (Primary AZ1) và Đọc (Replica AZ2).
 
 ---
 
-## 3. Kiến Trúc Giải Pháp (Solution Architecture)
+### 4. Triển khai kỹ thuật  
+*Các giai đoạn triển khai*  
+Dự án được chia thành 4 giai đoạn cụ thể:
+1.  **Giai đoạn 1: Phân tích & Vẽ kiến trúc mạng (Tuần 1 - 2):** Khởi tạo VPC, phân bổ IP cho các Subnets, cấu hình Route Tables và các Security Groups. Thiết kế cấu trúc cơ sở dữ liệu DocumentDB.
+2.  **Giai đoạn 2: Phát triển Core API & Tính năng tương tác (Tuần 3 - 5):** Viết API xác thực, CRUD phụ tùng, trang sơ đồ Schematic, và tích hợp Socket.io sử dụng Redis làm bộ chia sẻ trạng thái.
+3.  **Giai đoạn 3: Tích hợp Serverless Payment & Container hóa (Tuần 6 - 8):** Viết code cho AWS Lambda nhận IPN, tạo SQS queue, viết module Worker xử lý giao dịch. Viết Dockerfile đóng gói mã nguồn Backend.
+4.  **Giai đoạn 4: Triển khai Đám mây & Kiểm thử Tải (Tuần 9 - 11):** Triển khai ECS Fargate, ALB, S3, CloudFront và WAF. Chạy kiểm thử tải (Load test) giả lập 1,000+ người dùng đồng thời, tối ưu chỉ mục cơ sở dữ liệu và hoàn thiện bàn giao.
 
-Dưới đây là sơ đồ kiến trúc hệ thống tổng thể của J2Car trên nền tảng AWS:
-
-![Kiến Trúc Hệ Thống J2Car AutoParts](/images/kientruchethong.png)
-
-### 3.1. Thiết Kế Mạng (Network Design)
-
-Toàn bộ hạ tầng được triển khai bên trong **Amazon VPC** tên `J2Car-Production-VPC` với dải địa chỉ CIDR `10.0.0.0/16`, phân tách thành các lớp mạng rõ ràng và trải rộng trên 2 Availability Zones để đảm bảo tính sẵn sàng cao:
-
-| Subnet | CIDR | Loại | AZ | Chứa dịch vụ |
-|---|---|---|---|---|
-| Public Subnet 1 | 10.0.1.0/24 | Public | AZ1 | NAT Gateway 1, ALB |
-| Public Subnet 2 | 10.0.2.0/24 | Public | AZ2 | NAT Gateway 2, ALB |
-| Private Subnet 1 | 10.0.3.0/24 | Private | AZ1 | ECS Backend Task 1 |
-| Private Subnet 2 | 10.0.4.0/24 | Private | AZ2 | ECS Backend Task 2 |
-| Private Subnet 3 | 10.0.5.0/24 | Private | AZ1 | DocumentDB Primary, ElastiCache Primary |
-| Private Subnet 4 | 10.0.6.0/24 | Private | AZ2 | DocumentDB Replica, ElastiCache Replica |
-| Private Subnet 5 | 10.0.7.0/24 | Private | Integration | AWS Lambda, Amazon SQS |
-
-### 3.2. Các Dịch Vụ AWS Sử Dụng (AWS Services)
-
-| Nhóm | Dịch Vụ | Mục đích |
-|---|---|---|
-| Networking | Amazon VPC, ALB, NAT Gateway | Hạ tầng mạng, phân luồng traffic |
-| CDN & Security | Amazon CloudFront, AWS WAF | Phân phối nội dung, tường lửa |
-| Compute | Amazon ECS (Fargate), AWS Lambda | Chạy Backend, xử lý Webhook |
-| Container Registry | Amazon ECR | Lưu Docker Images của Backend |
-| Storage | Amazon S3 (Web Bucket, Media Bucket) | Host Frontend, lưu trữ media |
-| Database | Amazon DocumentDB | CSDL NoSQL chính (MongoDB compatible) |
-| Cache | Amazon ElastiCache (Redis) | Session, Cache, Socket.io Pub/Sub |
-| Messaging | Amazon SQS | Hàng đợi thanh toán bất đồng bộ |
-| VPC Endpoint | S3 Gateway Endpoint | Kết nối S3 nội bộ, miễn phí data transfer |
-| Security | AWS WAF, AWS KMS, AWS Secrets Manager, AWS IAM | Bảo mật đa lớp |
-| Monitoring | Amazon CloudWatch, Amazon SNS | Giám sát, cảnh báo sự cố |
-| Backup | AWS Backup | Sao lưu tự động DocumentDB |
+*Yêu cầu kỹ thuật*  
+*   **Môi trường chạy:** Docker Engine để build image, AWS CLI & AWS CDK để định cấu hình hạ tầng bằng mã (Infrastructure as Code).
+*   **Frontend:** ReactJS + Vite + Tailwind CSS, thư viện `socket.io-client` kết nối WebSocket.
+*   **Backend:** NodeJS + ExpressJS, Mongoose kết nối DocumentDB, `vnpay` & `axios` xử lý giao dịch.
 
 ---
 
-### 3.3. Luồng Dữ Liệu Chính (Data Flows)
-
-**A. Luồng Truy Cập Của Người Dùng (User Traffic Flow)**
-```
-End User (HTTPS)
-  → Amazon CloudFront (CDN Cache)
-      ├─► S3 Web Bucket         [Giao diện React SPA]
-      ├─► S3 Media Bucket       [Ảnh sản phẩm, phụ tùng]
-      └─► AWS WAF
-            → Application Load Balancer (ALB)
-                ├─► ECS Backend Task 1 (AZ1) [Node.js + Express]
-                └─► ECS Backend Task 2 (AZ2) [Node.js + Express]
-                        ├─► ElastiCache Redis  [Session / Cache / Socket]
-                        └─► Amazon DocumentDB  [CSDL chính]
-```
-
-**B. Luồng Tải Ảnh Sản Phẩm (Upload Flow - FinOps Optimized)**
-```
-Admin tải ảnh
-  → ECS Backend         [Tạo Pre-signed URL]
-  → Trả URL về Browser  [Không qua NAT Gateway]
-  → Browser tải file thẳng vào S3 Media Bucket qua S3 VPC Gateway Endpoint
-```
-
-**C. Luồng Thanh Toán Bất Đồng Bộ (Payment Flow)**
-```
-[1] Khách đặt hàng
-  → ECS Backend gọi API Cổng thanh toán (qua NAT Gateway)
-  ← Nhận URL Link thanh toán → Trả về cho Khách
-
-[2] Khách thanh toán xong
-  → Cổng thanh toán gọi IPN Webhook về hệ thống
-  → AWS WAF → ALB → AWS Lambda (Webhook Handler)
-  → Lambda xác thực checksum hóa đơn
-  → Đẩy "Hóa đơn sạch" vào Amazon SQS (Payment Queue)
-
-[3] ECS Backend Worker rút Queue từ SQS
-  → Cập nhật trạng thái đơn hàng vào DocumentDB
-  → Phát thông báo Real-time qua Socket.io (Redis Pub/Sub)
-  → Khách hàng nhận thông báo "Thanh toán thành công" ngay trên Web
-```
+### 5. Lộ trình & Mốc triển khai  
+*   **Mốc 1 (Tuần 1 - 2):** Hoàn thành hạ tầng VPC mạng cơ bản và thiết lập cluster DocumentDB. API Xác thực người dùng hoạt động ổn định.
+*   **Mốc 2 (Tuần 3 - 5):** Hoàn thành giao diện trang chủ, trang sơ đồ tương tác Schematic, và hệ thống phòng chat realtime giữa khách hàng và Admin.
+*   **Mốc 3 (Tuần 6 - 8):** Tích hợp thành công AI Scan Image nhận diện phụ tùng. Xây dựng hoàn chỉnh luồng nhận Webhook thanh toán tự động qua Lambda và hàng đợi SQS.
+*   **Mốc 4 (Tuần 9 - 10):** Triển khai thành công ứng dụng trên ECS Fargate và phân phối Frontend qua CloudFront CDN được bảo vệ bởi AWS WAF.
+*   **Mốc 5 (Tuần 11):** Hoàn tất load testing, tối ưu hóa hiệu năng cơ sở dữ liệu và bàn giao dự án.
 
 ---
 
-### 3.4. Chi Tiết Từng Lớp Kiến Trúc
+### 6. Ước tính ngân sách  
+Chi phí hạ tầng AWS hàng tháng dự kiến (dành cho môi trường Production quy mô vừa):
 
-#### 3.4.1. Lớp Biên & Phân Phối Nội Dung (Edge & Content Delivery)
-
-- **Amazon S3 — Web Bucket:** Host mã nguồn tĩnh React SPA của J2Car. Mọi request tới giao diện web đều được phục vụ từ S3 thông qua CloudFront, không tốn tài nguyên Backend.
-- **Amazon S3 — Media Bucket:** Kho lưu trữ hình ảnh phụ tùng, ảnh sản phẩm. Được kết nối qua **S3 Gateway VPC Endpoint** để Backend upload ảnh nội bộ hoàn toàn miễn phí và bảo mật.
-- **Amazon CloudFront:** Mạng CDN toàn cầu phân phối nội dung tĩnh từ S3 với độ trễ cực thấp cho người dùng tại Đông Nam Á. Đồng thời đóng vai trò là **Single Entry Point** duy nhất của toàn hệ thống — tất cả traffic từ Internet đều đi qua đây trước khi được phân luồng tới S3 hoặc ALB.
-- **AWS WAF (Web Application Firewall):** Gắn trực tiếp với CloudFront và ALB, bảo vệ chủ động chống lại:
-  - OWASP Top 10 (SQL Injection, XSS, CSRF...)
-  - DDoS Layer 7 (HTTP Flood)
-  - Bot Traffic và Request Rate Limiting
-
-#### 3.4.2. Lớp Mạng & Tính Toán (Network & Compute)
-
-- **Application Load Balancer (ALB):**  Nằm tại Public Subnet trải dài cả AZ1 và AZ2, nhận traffic từ CloudFront sau khi qua WAF. Có 2 nhiệm vụ quan trọng:
-  - **Cân bằng tải API:** Phân phối đều các request HTTP/HTTPS xuống các ECS Task theo thuật toán Round Robin.
-  - **Định tuyến WebSocket (Socket.io):** Cấu hình **Sticky Sessions (Cookie-based)** đảm bảo một phiên WebSocket Chat của khách luôn được định tuyến về đúng một Backend Task, tránh đứt kết nối.
-- **Amazon ECS Fargate (Backend Task 1 & 2):**
-  - Chạy mã nguồn Backend J2Car viết bằng **Node.js + Express**.
-  - Fargate là nền tảng Serverless Container — AWS quản lý toàn bộ máy chủ vật lý bên dưới. Nhóm phát triển chỉ cần tập trung vào mã nguồn ứng dụng.
-  - Mỗi AZ chạy ít nhất 1 Task (`Backend Task 1` tại AZ1, `Backend Task 2` tại AZ2). Khi tải tăng, **Auto Scaling Group** tự động khởi tạo thêm nhiều Task mới.
-  - Docker Image của Backend được lấy từ **Amazon ECR** (Elastic Container Registry) — kho Docker Image riêng tư và bảo mật của J2Car.
-- **NAT Gateway 1 & 2:**
-  - Được đặt tại Public Subnet của từng AZ (NAT GW 1 tại AZ1, NAT GW 2 tại AZ2).
-  - Cho phép các ECS Backend (đang ở Private Subnet) gọi ra Internet để: Gọi API VIN Decoder (NHTSA), Tạo link thanh toán từ VNPay/MoMo/Stripe.
-  - **Quan trọng:** Chặn hoàn toàn chiều ngược lại — không có bất kỳ kết nối nào từ Internet có thể chủ động truy cập vào Backend.
-
-#### 3.4.3. Lớp Tích Hợp Thanh Toán (Integration Tier — Serverless)
-
-*Được đặt riêng biệt tại Private Subnet 5 (Integration Tier), cô lập hoàn toàn với lớp Compute chính.*
-
-- **AWS Lambda — Webhook Handler:**
-  - Hàm Serverless, chỉ chạy khi được kích hoạt bởi IPN Callback từ cổng thanh toán ngoài.
-  - Thực hiện: Xác thực chữ ký bảo mật (HMAC/Checksum) của từng hóa đơn, lọc bỏ các callback giả mạo, định dạng lại dữ liệu hóa đơn và đẩy vào SQS.
-  - Ưu điểm: Hoàn toàn không chiếm tài nguyên của ECS Backend chính, không bao giờ bị nghẽn dù có hàng ngàn callback cùng lúc.
-- **Amazon SQS — Payment Queue:**
-  - Đóng vai trò bộ đệm (Buffer) giữa Lambda và Backend Worker.
-  - Đảm bảo **không bao giờ mất dữ liệu hóa đơn** — ngay cả khi toàn bộ ECS Backend bị sập, SQS vẫn giữ nguyên các message thanh toán. Khi Backend khởi động lại, tất cả sẽ được xử lý tuần tự.
-  - **ECS Backend đóng vai trò Worker:** Liên tục polling SQS, rút message ra, chốt đơn hàng trong DocumentDB và phát thông báo Real-time.
-
-#### 3.4.4. Lớp Lưu Trữ Dữ Liệu (Data Tier)
-
-*Đây là lớp sâu nhất và bảo mật nhất trong kiến trúc — chỉ nhận kết nối từ Security Group của Backend ECS.*
-
-- **Amazon ElastiCache (Redis) — Primary Node (AZ1) & Replica Node (AZ2):**
-  - **Session Store:** Lưu trữ session đăng nhập của người dùng, giải phóng Backend khỏi việc xử lý trạng thái.
-  - **Cache-Aside:** Cache danh sách phụ tùng, danh mục sản phẩm bán chạy, kết quả tra cứu VIN — giảm thiểu truy vấn đến DocumentDB.
-  - **Giỏ hàng tạm thời (Cart):** Lưu giỏ hàng chưa checkout của từng phiên.
-  - **Redis Pub/Sub Adapter:** Đây là thành phần then chốt cho tính năng Chat Real-time. Khi có 2 Backend Tasks chạy ở 2 AZ khác nhau, Redis đóng vai trò làm cầu nối — đảm bảo tin nhắn gửi lên Task 1 sẽ được broadcast tới khách hàng đang kết nối với Task 2, và ngược lại.
-  - **Sync Replication** giữa Primary (AZ1) và Replica (AZ2) đảm bảo không mất dữ liệu khi AZ1 gặp sự cố.
-- **Amazon DocumentDB (Primary Cluster — AZ1 & Replica Instance — AZ2):**
-  - Cơ sở dữ liệu NoSQL chính của J2Car, tương thích hoàn toàn với MongoDB — giữ nguyên driver và câu lệnh truy vấn hiện tại của mã nguồn.
-  - **Primary Cluster (WRITE)** tại AZ1: Xử lý toàn bộ thao tác ghi (đặt hàng, cập nhật trạng thái, đăng sản phẩm mới).
-  - **Replica Instance (READ)** tại AZ2: Phân tải toàn bộ thao tác đọc (tra cứu sản phẩm, lịch sử đơn hàng).
-  - **Sync Replication** liên tục giữa Primary và Replica — dữ liệu luôn nhất quán giữa 2 AZ.
-  - Tự động **Failover:** Nếu AZ1 có sự cố, Replica tại AZ2 được AWS tự động promote lên thành Primary trong vài giây, ứng dụng không bị gián đoạn.
-- **AWS Backup:** Tự động chụp snapshot toàn bộ DocumentDB theo lịch hàng ngày. Hỗ trợ khôi phục dữ liệu về bất kỳ thời điểm nào (Point-in-Time Recovery) trong vòng 35 ngày gần nhất.
-
-#### 3.4.5. Lớp Bảo Mật & Quản Trị (Security & Management)
-
-*Áp dụng mô hình Defense-in-Depth — nhiều lớp bảo mật độc lập, tương hỗ lẫn nhau.*
-
-- **Security Groups Chaining (Tường lửa ảo khép kín):**
-  - `SG-CloudFront` → Chỉ cho phép IP của CloudFront vào ALB.
-  - `SG-ALB` → ALB chỉ nhận traffic từ CloudFront.
-  - `SG-ECS` → Backend chỉ nhận kết nối từ ALB.
-  - `SG-DB` → Database & Cache chỉ nhận kết nối từ ECS Backend.
-  - Không có bất kỳ cổng nào mở trực tiếp ra Internet từ các lớp Private.
-- **AWS Secrets Manager:** Toàn bộ thông tin nhạy cảm (DB Connection String, JWT Secret, API Keys của VNPay/MoMo/Stripe) được mã hóa và lưu trữ tập trung. ECS Task gọi API Secrets Manager lúc khởi động để lấy credentials — tuyệt đối không ghi cứng trong mã nguồn hoặc file `.env`.
-- **AWS KMS (Key Management Service):** Cung cấp và quản lý khóa mã hóa (CMK) cho Encryption at Rest trên: S3 Buckets, DocumentDB volumes, ElastiCache, SQS Queue.
-- **AWS IAM:** Mỗi ECS Task được gắn một IAM Role riêng với đúng các quyền tối thiểu cần thiết (Least Privilege): quyền đọc Secrets Manager, ghi S3, gửi/nhận SQS. Không có Access Key nào được lưu trong container.
-- **AWS Systems Manager (SSM) / ECS Exec:** Cho phép đội DevOps truy cập shell của container đang chạy trên Fargate thông qua trình duyệt web — hoàn toàn không cần mở SSH Port 22, không cần Bastion Host.
-
-#### 3.4.6. Tối Ưu Chi Phí Vận Hành (FinOps)
-
-- **S3 Gateway VPC Endpoint:** Kết nối từ ECS Backend tới S3 đi qua mạng nội bộ AWS thay vì qua NAT Gateway. Chi phí NAT Gateway là $0.045/GB data — với lượng ảnh phụ tùng lớn, tiết kiệm được đáng kể mỗi tháng.
-- **Pre-signed URL cho Upload:** Thay vì Backend làm trung gian tải file ảnh (tốn CPU + băng thông Fargate), Backend chỉ cấp phát một URL tạm thời (15 phút). Trình duyệt người dùng dùng URL này upload thẳng vào S3 Media Bucket — Backend không tiêu thụ bất kỳ tài nguyên nào trong quá trình này.
-- **ECS Fargate Auto Scaling:** Số lượng Backend Tasks tăng/giảm tự động theo CPU Utilization. Giờ thấp điểm (2AM-6AM) chỉ chạy 2 Tasks, giờ cao điểm Flash Sale có thể tự động scale lên 10-20 Tasks.
-- **Serverless Lambda & SQS:** Chi phí chỉ tính theo số lần gọi thực tế. Không có giao dịch = không tốn chi phí.
-
-#### 3.4.7. Lớp Giám Sát & Cảnh Báo (Monitoring & Alerting)
-
-- **Amazon CloudWatch Metrics:** Thu thập và visualize các chỉ số quan trọng:
-  - ECS: CPU Utilization, Memory Utilization, Task Count.
-  - ALB: Request Count, Latency (P50/P95/P99), 5xx Error Rate.
-  - DocumentDB: Connections, Read/Write Latency, Replication Lag.
-  - ElastiCache: Cache Hit Rate, Evictions, Connections.
-  - SQS: Queue Depth (số message đang chờ xử lý), Age of Oldest Message.
-- **CloudWatch Alarms + Amazon SNS:** Khi bất kỳ chỉ số nào vượt ngưỡng cảnh báo, SNS sẽ gửi Email/SMS tức thì tới đội vận hành. Ví dụ: SQS Queue Depth > 1000 message, ALB 5xx Error Rate > 1%, DocumentDB CPU > 80%.
+| Dịch vụ AWS | Cấu hình ước tính | Chi phí ước tính / Tháng |
+| :--- | :--- | :--- |
+| **Amazon ECS & Fargate** | 2 Tasks (0.5 vCPU, 1 GB RAM) chạy liên tục | ~ $15.00 |
+| **Application Load Balancer** | 1 ALB, 1 LCU | ~ $22.00 |
+| **Amazon DocumentDB** | Cluster db.t3.medium (1 Primary + 1 Replica) | ~ $110.00 |
+| **Amazon ElastiCache Redis** | cache.t3.micro Cluster (1 Primary + 1 Replica) | ~ $30.00 |
+| **Amazon S3** | Lưu trữ Web & Media (tổng ~ 50 GB + request) | ~ $3.00 |
+| **Amazon CloudFront** | Lưu lượng Data Transfer Out ~ 150 GB | ~ $12.00 |
+| **AWS WAF** | 1 Web ACL + 3 Rules cơ bản | ~ $10.00 |
+| **NAT Gateways** | 2 NAT Gateways + phí xử lý dữ liệu qua mạng | ~ $65.00 |
+| **AWS Lambda & SQS** | 50,000 giao dịch (nằm trong Free Tier) | ~ $0.00 |
+| **Tổng chi phí hạ tầng** | **Quy mô Production hoạt động ổn định** | **~ $267.00 / Tháng** |
 
 ---
 
-## 4. Lộ Trình & Mốc Triển Khai (Roadmap)
-
-| Giai đoạn | Nội dung | Mốc thời gian |
-|---|---|---|
-| **Giai đoạn 1** | Thiết kế kiến trúc chi tiết, tạo VPC, Subnets, Security Groups, IAM Roles | Tuần 1-2 |
-| **Giai đoạn 2** | Triển khai Data Tier: DocumentDB Multi-AZ, ElastiCache Redis Primary-Replica, cấu hình Backup | Tuần 3-4 |
-| **Giai đoạn 3** | Triển khai Compute Tier: ECR, ECS Fargate, ALB, NAT Gateways, Auto Scaling | Tuần 5-6 |
-| **Giai đoạn 4** | Triển khai Frontend: S3 Buckets, CloudFront, WAF, S3 VPC Endpoint | Tuần 7 |
-| **Giai đoạn 5** | Tích hợp thanh toán: Lambda Webhook Handler, SQS, kết nối VNPay/MoMo/Stripe | Tuần 8 |
-| **Giai đoạn 6** | Bảo mật: KMS, Secrets Manager, CloudWatch Alarms, SNS | Tuần 9 |
-| **Giai đoạn 7** | Kiểm thử chịu tải, UAT, tinh chỉnh Auto Scaling, go-live production | Tuần 10-12 |
-
----
-
-## 5. Ước Tính Ngân Sách (Budget Estimation)
-
-*Chi phí tham khảo ước tính cho môi trường Production quy mô vừa (Region: ap-southeast-1)*
-
-| Dịch vụ | Cấu hình | Chi phí ước tính/tháng |
-|---|---|---|
-| ECS Fargate | 2 Tasks × 0.5 vCPU × 1GB RAM (baseline) | ~$15 |
-| ALB | 1 ALB, ~50GB data processed | ~$20 |
-| NAT Gateway | 2 NAT GW (Multi-AZ), ~10GB traffic | ~$35 |
-| DocumentDB | db.t3.medium × 1 Primary + 1 Replica | ~$120 |
-| ElastiCache Redis | cache.t3.micro × 1 Primary + 1 Replica | ~$50 |
-| S3 (Web + Media) | ~50GB Storage + CloudFront requests | ~$10 |
-| CloudFront | ~100GB data transfer | ~$9 |
-| Lambda + SQS | ~500K invocations/tháng | ~$1 |
-| CloudWatch, SNS, ECR | Monitoring & Registry | ~$5 |
-| AWS WAF | ~1M requests/tháng | ~$10 |
-| **Tổng ước tính** | | **~$275/tháng** |
-
-> ⚠️ **Lưu ý:** Đây là mức chi phí baseline cho traffic vừa phải. Chi phí thực tế có thể thấp hơn đáng kể trong giai đoạn đầu nhờ kiến trúc Auto Scaling. Xem chi tiết tại [AWS Pricing Calculator](https://calculator.aws/).
+### 7. Đánh giá rủi ro  
+*Ma trận rủi ro & Chiến lược giảm thiểu*  
+1.  **Nghẽn cổ chai cơ sở dữ liệu (DocumentDB):**
+    *   *Rủi ro:* Lượng truy vấn đọc thông số phụ tùng quá lớn khi chạy chiến dịch khuyến mại làm CPU DB đạt 100%.
+    *   *Giảm thiểu:* Định cấu hình chuyển toàn bộ các câu lệnh tìm kiếm/đọc sản phẩm sang các Replica Instance (chỉ đọc), đồng thời lưu trữ các phụ tùng hot nhất vào bộ nhớ cache Redis.
+2.  **Sự cố đứt kết nối WebSocket (Chat Real-time):**
+    *   *Rủi ro:* Người dùng di chuyển mạng hoặc máy chủ tự động co giãn (Auto Scaling) làm ngắt luồng chat.
+    *   *Giảm thiểu:* Cấu hình ALB Sticky Sessions để neo người dùng vào đúng container đang chat, kết hợp Redis Pub/Sub adapter để đồng bộ tin nhắn xuyên suốt các tasks.
+3.  **Chi phí đám mây vượt tầm kiểm soát:**
+    *   *Rủi ro:* Băng thông mạng tăng vọt hoặc cấu hình sai tài nguyên Fargate.
+    *   *Giảm thiểu:* Thiết lập AWS Budgets gửi cảnh báo qua Email ngay khi chi phí dự kiến vượt quá $300/tháng. Cấu hình quy tắc vòng đời S3 để tự động xóa/nén các ảnh quét AI cũ.
 
 ---
 
-## 6. Đánh Giá Rủi Ro & Phương Án Dự Phòng (Risk Assessment)
-
-### 6.1. Ma Trận Rủi Ro
-
-| Rủi ro | Mức độ ảnh hưởng | Xác suất | Mức độ ưu tiên |
-|---|---|---|---|
-| Sự cố tại 1 Availability Zone (AZ) | Cao | Thấp | 🟡 Trung bình |
-| Traffic tăng đột biến (Flash Sale) | Trung bình | Cao | 🟡 Trung bình |
-| Cổng thanh toán bên ngoài bị gián đoạn | Cao | Thấp | 🟡 Trung bình |
-| Rò rỉ Credentials / Secret Keys | Rất cao | Rất thấp | 🔴 Cao |
-| Tấn công DDoS / SQL Injection | Cao | Trung bình | 🔴 Cao |
-| DocumentDB bị mất dữ liệu | Rất cao | Rất thấp | 🔴 Cao |
-
-### 6.2. Chiến Lược Giảm Thiểu & Kế Hoạch Dự Phòng
-
-- **Sự cố AZ:** Nhờ thiết kế Multi-AZ, ALB/ECS/DocumentDB/Redis đều có bản sao ở AZ còn lại. AWS tự động Failover trong vài giây — người dùng hầu như không cảm nhận được gián đoạn.
-- **Traffic đột biến:** ECS Auto Scaling + CloudFront Cache gánh toàn bộ tải tĩnh. Ngay cả khi Backend chưa kịp scale, giao diện web vẫn hoạt động bình thường nhờ CloudFront CDN.
-- **Cổng thanh toán gián đoạn:** SQS lưu giữ toàn bộ message Webhook. Hệ thống không mất bất kỳ thông tin hóa đơn nào. Khi cổng thanh toán phục hồi, các giao dịch sẽ được xử lý tuần tự và tự động.
-- **Rò rỉ Credentials:** AWS Secrets Manager tự động rotate Credentials định kỳ. Không có Secret nào nằm trong mã nguồn hoặc môi trường Container — hoàn toàn không thể bị lộ qua code review hay CI/CD logs.
-- **Tấn công bảo mật:** AWS WAF block ngay lập tức tại lớp biên. Security Groups Chaining đảm bảo không có điểm truy cập nào từ Internet vào lớp dữ liệu. CloudWatch + SNS cảnh báo real-time khi phát hiện traffic bất thường.
-- **Mất dữ liệu DB:** AWS Backup chụp snapshot hàng ngày, hỗ trợ Point-in-Time Recovery lên tới 35 ngày. DocumentDB Sync Replication đảm bảo Primary và Replica luôn đồng bộ.
-
----
-
-## 7. Kết Quả Kỳ Vọng (Expected Outcomes)
-
-- **Kỹ thuật:** Hệ thống đạt SLA uptime 99.9%+, xử lý đồng thời hàng nghìn người dùng với độ trễ API < 200ms.
-- **Nghiệp vụ:** Tự động hóa 100% vòng đời đơn hàng từ lúc đặt hàng đến khi thanh toán và xác nhận.
-- **Trải nghiệm người dùng:** Chat hỗ trợ Real-time, thông báo trạng thái đơn hàng tức thì, tra cứu phụ tùng tự động qua số VIN.
-- **Tài chính:** Kiến trúc Pay-as-you-go tối ưu chi phí, không tốn phí cho tài nguyên nhàn rỗi.
+### 8. Kết quả kỳ vọng  
+*   **Cải tiến kỹ thuật:** Tốc độ tải trang Frontend dưới 2 giây trên toàn thế giới nhờ CloudFront CDN. Máy chủ Backend có khả năng tự phục hồi và tự động nhân rộng từ 2 tasks lên tối đa 10 tasks khi lượng truy cập tăng đột biến.
+*   **Giá trị kinh doanh:** Đảm bảo tỉ lệ thất thoát đơn hàng bằng 0% nhờ hàng đợi thanh toán SQS đáng tin cậy. Tăng trải nghiệm người dùng giúp tăng doanh thu bán hàng phụ tùng ô tô nhờ các tính năng tương tác sơ đồ độc đáo và quét hình ảnh thông minh.

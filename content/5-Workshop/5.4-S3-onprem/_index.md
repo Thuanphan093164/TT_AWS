@@ -1,27 +1,20 @@
 ---
-title: "Step 4: Access S3 from On-premise"
-date: 2024-01-01
-weight: 4
-chapter: false
-pre: " <b> 5.4. </b> "
+title : "Access S3 from on-premises"
+date : 2024-01-01
+weight : 4
+chapter : false
+pre : " <b> 5.4. </b> "
 ---
 
-## Step 4: Access S3 from On-premises using Interface Endpoint
+#### Overview
 
-In this section, I configured an **Amazon S3 PrivateLink Interface Endpoint** to enable physical local servers located at the J2Car AutoParts on-premises office/warehouse to communicate securely with the cloud S3 Media Bucket over a VPN tunnel.
++ In this section, you will create an Interface endpoint to access Amazon S3 from a simulated on-premises environment. The Interface endpoint will allow you to route to Amazon S3 over a VPN connection from your simulated on-premises environment.
 
----
++ Why using **Interface endpoint**: 
+    + Gateway endpoints only work with resources running in the VPC where they are created. Interface endpoints work with resources running in VPC, and also resources running in on-premises environments. Connectivty from your on-premises environment to the cloud can be provided by AWS Site-to-Site VPN or AWS Direct Connect.
+    + Interface endpoints allow you to connect to services powered by AWS PrivateLink. These services include some AWS services, services hosted by other AWS customers and partners in their own VPCs (referred to as PrivateLink Endpoint Services), and supported AWS Marketplace Partner services. For this workshop, we will focus on connecting to Amazon S3.
 
-### Gateway Endpoint vs. Interface Endpoint
+![Interface endpoint architecture](/images/5-Workshop/5.4-S3-onprem/diagram3.png)
 
-- **Gateway Endpoint:** Only supports resources running natively inside the VPC where the gateway is deployed.
-- **Interface Endpoint (AWS PrivateLink):** Supports resources inside the VPC as well as external systems located on-premises connecting via Site-to-Site VPN or AWS Direct Connect.
 
----
 
-### Step-by-Step Sections
-
-1. [Prepare Environment & Configure VPN Routing](5.4.1-prepare/)
-2. [Create S3 Interface Endpoint](5.4.2-create-interface-enpoint/)
-3. [Test Interface Endpoint DNS](5.4.3-test-endpoint/)
-4. [DNS Resolver Simulation](5.4.4-dns-simulation/)

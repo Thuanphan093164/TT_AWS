@@ -1,38 +1,43 @@
 ---
-title: "Create an S3 Interface Endpoint"
-date: 2024-01-01
-weight: 2
-chapter: false
-pre: " <b> 5.4.2. </b> "
+title : "Create an S3 Interface endpoint"
+date : 2024-01-01
+weight : 2
+chapter : false
+pre : " <b> 5.4.2 </b> "
 ---
 
-## Create an Amazon S3 VPC Interface Endpoint (AWS PrivateLink)
+In this section you will create and test an S3 interface endpoint using the simulated on-premises environment deployed as part of this workshop.
 
-I provisioned an S3 Interface Endpoint in our Cloud VPC to attach a static private IP resource inside each Availability Zone, enabling on-premises routing over the VPN tunnel.
+1. Return to the Amazon VPC menu. In the navigation pane, choose Endpoints, then click Create Endpoint.
 
----
+2. In Create endpoint console:
++ Name the interface endpoint
++ In Service category, choose **aws services** 
 
-### Step-by-Step Configuration
+![name](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint1.png)
 
-1. Open the **Amazon VPC Console** in the Singapore region (`ap-southeast-1`).
-2. Select **Endpoints** from the left panel and click **Create Endpoint**.
-3. In the Create endpoint configuration menu:
-   - **Name tag:** Enter `s3-interface-endpoint`.
-   - **Service category:** Select **AWS services**.
-   - **Services:** Type `s3` in the search filter and select the service `com.amazonaws.ap-southeast-1.s3` with Type **Interface**.
-   - **VPC:** Select **J2Car-workshop-VPC** (Ensure you select Cloud VPC and NOT On-premises VPC).
-   - **Additional settings:** Ensure **Enable DNS name** is unchecked (we will handle custom DNS routing using Private Hosted Zones later).
-   - **Subnets:** Check the AZ subnets in `ap-southeast-1a` and `ap-southeast-1b`.
-   - **Security group:** Select the security group **SGforS3Endpoint** (allowing inbound HTTPS port 443 traffic originating from the on-premises subnet range).
-   - **Policy:** Leave default as **Full Access**.
-4. Click **Create endpoint** to proceed.
+3.  In the Search box, type S3 and press Enter. Select the endpoint named com.amazonaws.us-east-1.s3. Ensure that the Type column indicates Interface.
 
----
+![service](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint2.png)
 
-### AWS Console Verification Proofs
+4. For VPC, select VPC Cloud from the drop-down.
+{{% notice warning %}}
+Make sure to choose "VPC Cloud" and not "VPC On-prem"
+{{% /notice %}}
++ Expand **Additional settings** and ensure that Enable DNS name is *not* selected (we will use this in the next part of the workshop)
 
-Once created, the VPC Dashboard displays the endpoint resource details:
+![vpc](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint3.png)
 
-#### Interface Endpoint Status Available:
-![S3 VPC Endpoint](/images/5-Workshop/4-endpoints.png)
-*(The Endpoint list now contains an Interface Type resource associated with private IP endpoints).*
+5. Select 2 subnets in the following AZs: us-east-1a and us-east-1b
+
+![subnets](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint4.png)
+
+6. For Security group, choose SGforS3Endpoint:
+
+![sg](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint5.png)
+
+7. Keep the default policy - full access and click Create endpoint
+
+![success](/images/5-Workshop/5.4-S3-onprem/s3-interface-endpoint-success.png)
+
+Congratulation on successfully creating S3 interface endpoint. In the next step, we will test the interface endpoint.

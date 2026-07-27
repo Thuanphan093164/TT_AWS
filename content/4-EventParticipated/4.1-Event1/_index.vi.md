@@ -11,7 +11,7 @@ pre: " <b> 4.1. </b> "
 ### Thông tin sự kiện
 * **Tên sự kiện:** Mini Meetup – First Cloud AI Journey
 * **Thời gian:** 13/06/2026 (09:00 - 12:00)
-* **Địa điểm:** AWS Office – Grand Terra, 36 Cát Linh, Hà Nội
+* **Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 * **Vai trò:** Người tham dự
 
 ---
@@ -123,5 +123,5 @@ Dựa trên các kiến thức thu hoạch từ buổi Mini Meetup, tôi đã đ
 
 Buổi Mini Meetup **First Cloud AI Journey** đã mang lại cho tôi những trải nghiệm vô cùng quý giá. Không chỉ dừng lại ở các slide lý thuyết, hai bài chia sẻ của anh Hải Hiếu và anh Vũ Thế Huy mang tính thực chiến rất cao, giải quyết đúng những bài toán mà các kỹ sư gặp phải trong thực tế vận hành hệ thống đám mây và xử lý dữ liệu lớn.
 
-Đặc biệt, không gian giao lưu cởi mở tại văn phòng AWS Hà Nội đã giúp tôi có cơ hội trao đổi trực tiếp với các diễn giả, học hỏi thêm về định hướng phát triển sự nghiệp trong mảng Cloud/DevOps. Những kiến thức đúc kết từ buổi meetup này đã giúp tôi tự tin hơn rất nhiều trong việc hoàn thiện thiết kế kiến trúc hạ tầng an toàn và tối ưu cho dự án thực tập NodeJ2Car.
+Đặc biệt, không gian giao lưu cởi mở tại văn phòng AWS TP. Hồ Chí Minh (tòa nhà Bitexco) đã giúp tôi có cơ hội trao đổi trực tiếp với các diễn giả, học hỏi thêm về định hướng phát triển sự nghiệp trong mảng Cloud/DevOps. Những kiến thức đúc kết từ buổi meetup này đã giúp tôi tự tin hơn rất nhiều trong việc hoàn thiện thiết kế kiến trúc hạ tầng an toàn và tối ưu cho dự án thực tập NodeJ2Car.
 

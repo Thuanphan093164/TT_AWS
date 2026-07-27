@@ -25,7 +25,7 @@ Trong quá trình thực tập, em đã tham gia 1 event, với mỗi event là 
 
 &emsp;**Thời gian:** 13/06/2026 (08:30 - 12:00)
 
-&emsp;**Địa điểm:** AWS Office – Grand Terra, 36 Cát Linh, Hà Nội, Thành phố Hồ Chí Minh, Việt Nam
+&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự
 

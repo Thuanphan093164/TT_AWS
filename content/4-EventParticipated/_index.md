@@ -24,7 +24,7 @@ During my internship, I participated in one event. It was a memorable experience
 
 &emsp;**Date & Time:** June 23, 2026  (08:30 - 12:00)
 
-&emsp;**Location:** Ho Chi Minh City, Vietnam  
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
 

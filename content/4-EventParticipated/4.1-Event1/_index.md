@@ -11,7 +11,7 @@ pre: " <b> 4.1. </b> "
 ### Event Information
 * **Event Name:** Mini Meetup – First Cloud AI Journey
 * **Date & Time:** June 13, 2026 (09:00 - 12:00)
-* **Location:** AWS Office – Grand Terra, 36 Cat Linh, Hanoi, Vietnam
+* **Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City
 * **Role:** Attendee
 
 ---
@@ -123,4 +123,4 @@ Applying the takeaways from the meetup, I formulated concrete technical enhancem
 
 Attending the **First Cloud AI Journey Mini Meetup** was an immensely valuable experience. Beyond theoretical slides, the presentations by Mr. Hải Hiếu and Mr. Vũ Thế Huy provided actionable, real-world solutions to common cloud infrastructure and data engineering challenges.
 
-The open networking session at the AWS Hanoi office allowed me to engage directly with industry speakers and gain guidance on career development in Cloud and DevOps. The technical insights gained from this meetup have significantly boosted my confidence in refining the architecture and security posture of the NodeJ2Car project.
+The open networking session at the AWS Ho Chi Minh City office (Bitexco Tower) allowed me to engage directly with industry speakers and gain guidance on career development in Cloud and DevOps. The technical insights gained from this meetup have significantly boosted my confidence in refining the architecture and security posture of the NodeJ2Car project.

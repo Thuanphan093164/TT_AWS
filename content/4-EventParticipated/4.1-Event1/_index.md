@@ -124,10 +124,3 @@ Applying the takeaways from the meetup, I formulated concrete technical enhancem
 Attending the **First Cloud AI Journey Mini Meetup** was an immensely valuable experience. Beyond theoretical slides, the presentations by Mr. Hải Hiếu and Mr. Vũ Thế Huy provided actionable, real-world solutions to common cloud infrastructure and data engineering challenges.
 
 The open networking session at the AWS Hanoi office allowed me to engage directly with industry speakers and gain guidance on career development in Cloud and DevOps. The technical insights gained from this meetup have significantly boosted my confidence in refining the architecture and security posture of the NodeJ2Car project.
-
----
-
-### Event Evidence
-
-![Mini Meetup – First Cloud AI Journey](/images/4-EventParticipated/event1.jpg)
-*Figure: Speaker presentation and networking session at the AWS Office in Hanoi during the Mini Meetup – First Cloud AI Journey.*

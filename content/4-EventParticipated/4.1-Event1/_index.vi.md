@@ -125,9 +125,3 @@ Buổi Mini Meetup **First Cloud AI Journey** đã mang lại cho tôi những t
 
 Đặc biệt, không gian giao lưu cởi mở tại văn phòng AWS Hà Nội đã giúp tôi có cơ hội trao đổi trực tiếp với các diễn giả, học hỏi thêm về định hướng phát triển sự nghiệp trong mảng Cloud/DevOps. Những kiến thức đúc kết từ buổi meetup này đã giúp tôi tự tin hơn rất nhiều trong việc hoàn thiện thiết kế kiến trúc hạ tầng an toàn và tối ưu cho dự án thực tập NodeJ2Car.
 
----
-
-### Ảnh minh chứng sự kiện
-
-![Mini Meetup – First Cloud AI Journey](/images/4-EventParticipated/event1.jpg)
-*Hình ảnh: Diễn giả chia sẻ và không gian sự kiện Mini Meetup – First Cloud AI Journey tại văn phòng AWS Hà Nội.*

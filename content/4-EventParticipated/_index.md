@@ -17,14 +17,26 @@ pre: " <b> 4. </b> "
 > * Outcomes or value gained (lessons learned, new skills, contribution to the team/project)
 > * This listing helps demonstrate your actual participation as well as the soft skills and experience you have gained from each event.
 
-During my internship, I participated in one event. It was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
+During my internship, I participated in key events. Each event was a memorable experience that provided new, interesting, and useful knowledge, along with gifts and wonderful moments.
 
 ### [Event 1](4.1-Event1/)  
 &emsp;**Event Name:** Mini Meetup – First Cloud AI Journey  
 
-&emsp;**Date & Time:** June 23, 2026  (08:30 - 12:00)
+&emsp;**Date & Time:** June 06, 2026 (09:00 - 12:00)
 
 &emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
 
 &emsp;**Role:** Attendee  
+
+---
+
+### [Event 2](4.2-Event2/)  
+&emsp;**Event Name:** "Cloud Architect" Competition  
+
+&emsp;**Date & Time:** During Internship  
+
+&emsp;**Location:** 26th Floor, Bitexco Tower, 02 Hai Trieu Street, Saigon Ward, Ho Chi Minh City  
+
+&emsp;**Role:** Event Observer & Audience Member  
+
 
